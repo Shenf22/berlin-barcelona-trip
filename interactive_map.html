@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Карта маршрута: Берлин ➔ Барселона</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    .point-dot { transition: all 0.2s ease-in-out; cursor: pointer; }
+    .point-dot:hover { transform: scale(1.4); }
+    .pulse-glow { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body class="bg-[var(--background,#0f172a)] text-[var(--foreground,#f8fafc)] p-4 font-sans min-h-screen">
+  <div class="max-w-6xl mx-auto">
+    
+    <!-- Header -->
+    <div class="flex flex-wrap items-center justify-between pb-4 border-b border-[var(--border,#334155)] mb-4 gap-3">
+      <div>
+        <h1 class="text-2xl font-bold flex items-center gap-2">
+          <span>🚗</span> Берлин ➔ Барселона: Интерактивная карта
+        </h1>
+        <p class="text-sm text-[var(--muted-foreground,#94a3b8)]">
+          7 дней • ~2 150 км • Главный маршрут + эпические горные ответвления
+        </p>
+      </div>
+
+      <!-- Controls / Legend -->
+      <div class="flex items-center gap-2 text-xs">
+        <button id="btnMain" onclick="filterRoute('all')" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 font-medium text-white transition">
+          Все точки
+        </button>
+        <button id="btnMountains" onclick="filterRoute('mountains')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          🏔️ Горы и перевалы
+        </button>
+        <button id="btnCastles" onclick="filterRoute('castles')" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition">
+          🏰 Замки и акведуки
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      
+      <!-- Interactive SVG Map -->
+      <div class="lg:col-span-8 bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] rounded-2xl p-4 shadow-xl relative overflow-hidden flex flex-col justify-between">
+        
+        <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
+          <div class="flex items-center gap-3">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-blue-400 inline-block"></span> Основной маршрут (7 дней)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-amber-400 border-dashed border-t inline-block"></span> Горные крюки (+1 день)</span>
+          </div>
+          <span>Нажмите на любую точку на карте</span>
+        </div>
+
+        <!-- SVG Map Container -->
+        <div class="w-full relative flex items-center justify-center py-2">
+          <svg viewBox="0 0 700 800" class="w-full h-auto max-h-[580px] drop-shadow-md select-none" id="tripSvg">
+            <!-- Background Europe Outline Representation -->
+            <defs>
+              <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#38bdf8" />
+                <stop offset="50%" stop-color="#3b82f6" />
+                <stop offset="100%" stop-color="#6366f1" />
+              </linearGradient>
+              <linearGradient id="mountainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#ef4444" />
+              </linearGradient>
+            </defs>
+
+            <!-- Geographic Country outlines / stylized regions -->
+            <!-- Germany -->
+            <path d="M 400 80 L 530 110 L 560 220 L 520 320 L 390 350 L 320 280 L 310 180 Z" fill="#334155" opacity="0.3" stroke="#475569" stroke-width="1" />
+            <!-- Switzerland & Alps region -->
+            <path d="M 330 360 L 440 360 L 430 420 L 320 430 Z" fill="#1e3a8a" opacity="0.25" stroke="#3b82f6" stroke-width="1" stroke-dasharray="3,3" />
+            <!-- France -->
+            <path d="M 280 260 L 380 340 L 320 440 L 340 580 L 250 630 L 160 520 L 140 370 L 230 270 Z" fill="#334155" opacity="0.25" stroke="#475569" stroke-width="1" />
+            <!-- Spain (Catalonia) -->
+            <path d="M 230 640 L 330 610 L 310 740 L 200 750 Z" fill="#334155" opacity="0.3" stroke="#475569" stroke-width="1" />
+            <!-- Mediterranean Sea -->
+            <path d="M 350 580 Q 420 630 380 750 L 650 750 L 650 550 Z" fill="#0284c7" opacity="0.1" />
+
+            <!-- Labels for Countries -->
+            <text x="470" y="160" fill="#64748b" font-size="14" font-weight="bold" letter-spacing="2">ГЕРМАНИЯ</text>
+            <text x="365" y="390" fill="#60a5fa" font-size="12" font-weight="bold">АЛЬПЫ (ШВЕЙЦАРИЯ)</text>
+            <text x="210" y="420" fill="#64748b" font-size="14" font-weight="bold" letter-spacing="2">ФРАНЦИЯ</text>
+            <text x="230" y="690" fill="#64748b" font-size="13" font-weight="bold" letter-spacing="2">ИСПАНИЯ</text>
+            <text x="410" y="650" fill="#38bdf8" font-size="12" font-style="italic">Средиземное море</text>
+
+            <!-- Main Route Tracks (Line) -->
+            <!-- Berlin (510, 110) -> Leipzig -> Nuremberg (440, 270) -> Zurich/Lucerne (370, 390) -> Chillon/Montreux (330, 420) -> Annecy (315, 455) -> Pont du Gard (295, 540) -> Carcassonne (235, 595) -> Collioure (275, 635) -> Girona (270, 680) -> Barcelona (255, 730) -->
+            <path d="M 510 110 L 440 270 L 370 390 L 330 420 L 315 455 L 295 540 L 235 595 L 275 635 L 270 680 L 255 730" 
+                  fill="none" stroke="url(#routeGrad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="drop-shadow" />
+
+            <!-- Alternative 1: Chamonix / Mont-Blanc Detour -->
+            <!-- From Chillon (330, 420) -> Chamonix Mont-Blanc (350, 460) -> Annecy (315, 455) -->
+            <path d="M 330 420 L 355 455 L 315 455" 
+                  fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round" />
+
+            <!-- Alternative 2: Millau Viaduct Detour (over Tarn gorges) -->
+            <!-- From Pont du Gard (295, 540) -> Viaduc de Millau (235, 530) -> Carcassonne (235, 595) -->
+            <path d="M 295 540 L 235 530 L 235 595" 
+                  fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="6,4" stroke-linecap="round" />
+
+            <!-- ROUTE CHECKPOINTS -->
+
+            <!-- 0. BERLIN -->
+            <g class="point-group" onclick="selectPoint(0)">
+              <circle cx="510" cy="110" r="7" fill="#38bdf8" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="522" y="115" fill="#f8fafc" font-size="12" font-weight="bold">Берлин (Старт)</text>
+            </g>
+
+            <!-- 1. NUREMBERG (Day 1) -->
+            <g class="point-group" onclick="selectPoint(1)">
+              <circle cx="440" cy="270" r="6" fill="#3b82f6" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="452" y="275" fill="#e2e8f0" font-size="11">1. Нюрнберг (Крепость)</text>
+            </g>
+
+            <!-- 2. LAKE LUCERNE / ALPS (Day 2) -->
+            <g class="point-group" onclick="selectPoint(2)">
+              <circle cx="370" cy="390" r="7" fill="#60a5fa" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="382" y="395" fill="#e2e8f0" font-size="11" font-weight="bold">2. Озеро Люцерн (Альпы)</text>
+            </g>
+
+            <!-- 3. CHILLON CASTLE & ANNECY (Day 3) -->
+            <g class="point-group" onclick="selectPoint(3)">
+              <circle cx="330" cy="420" r="6" fill="#3b82f6" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="210" y="415" fill="#e2e8f0" font-size="11">3. Замок Шильон</text>
+            </g>
+            <g class="point-group" onclick="selectPoint(4)">
+              <circle cx="315" cy="455" r="6" fill="#3b82f6" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="250" y="465" fill="#cbd5e1" font-size="11">Анси</text>
+            </g>
+
+            <!-- DETOUR A: CHAMONIX MONT BLANC -->
+            <g class="point-group" onclick="selectPoint(10)">
+              <polygon points="355,445 365,465 345,465" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" class="point-dot" />
+              <text x="370" y="460" fill="#f59e0b" font-size="11" font-weight="bold">★ Шамони (Монблан 4808м)</text>
+            </g>
+
+            <!-- 4. PONT DU GARD (Day 4) -->
+            <g class="point-group" onclick="selectPoint(5)">
+              <circle cx="295" cy="540" r="7" fill="#6366f1" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="307" y="545" fill="#e2e8f0" font-size="11" font-weight="bold">4. Акведук Пон-дю-Гар</text>
+            </g>
+
+            <!-- DETOUR B: VIADUC DE MILLAU -->
+            <g class="point-group" onclick="selectPoint(11)">
+              <polygon points="235,520 245,540 225,540" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" class="point-dot" />
+              <text x="110" y="525" fill="#f59e0b" font-size="11" font-weight="bold">★ Виадук Мийо (343м)</text>
+            </g>
+
+            <!-- 5. CARCASSONNE (Day 5) -->
+            <g class="point-group" onclick="selectPoint(6)">
+              <circle cx="235" cy="595" r="7" fill="#8b5cf6" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="120" y="600" fill="#e2e8f0" font-size="11" font-weight="bold">5. Крепость Каркассон</text>
+            </g>
+
+            <!-- 6. COLLIOURE & GIRONA (Day 6) -->
+            <g class="point-group" onclick="selectPoint(7)">
+              <circle cx="275" cy="635" r="6" fill="#06b6d4" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="288" y="638" fill="#e2e8f0" font-size="11">6. Коллиур (Море)</text>
+            </g>
+            <g class="point-group" onclick="selectPoint(8)">
+              <circle cx="270" cy="680" r="6" fill="#3b82f6" stroke="#ffffff" stroke-width="2" class="point-dot" />
+              <text x="282" y="685" fill="#cbd5e1" font-size="11">Жирона</text>
+            </g>
+
+            <!-- 7. TOSSA DE MAR & BARCELONA (Day 7) -->
+            <g class="point-group" onclick="selectPoint(9)">
+              <circle cx="255" cy="730" r="8" fill="#10b981" stroke="#ffffff" stroke-width="2.5" class="point-dot" />
+              <text x="270" y="735" fill="#10b981" font-size="13" font-weight="bold">7. Барселона (Финиш! 🎉)</text>
+            </g>
+          </svg>
+        </div>
+
+        <div class="text-[11px] text-slate-400 mt-2 text-center bg-slate-900/60 p-2 rounded-lg border border-slate-800">
+          💡 <strong>Желтые треугольники</strong> — эпические горные крюки (+1-2 часа за рулем), если захотите экстрима и максимального масштаба.
+        </div>
+      </div>
+
+      <!-- Point Inspector / Info Card -->
+      <div class="lg:col-span-4 flex flex-col gap-4">
+        
+        <!-- Active Point Card -->
+        <div id="inspectorCard" class="bg-[var(--card,#1e293b)] border border-[var(--border,#334155)] rounded-2xl p-5 shadow-xl flex-1 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span id="cardBadge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30">
+                День 2 • Горы и озера
+              </span>
+              <span id="cardDrive" class="text-xs text-slate-400 font-mono">~4.5 ч от Берлина</span>
+            </div>
+
+            <h3 id="cardTitle" class="text-xl font-bold text-white mb-2">
+              Озеро Люцерн и Альпы
+            </h3>
+
+            <div class="w-full h-36 rounded-xl bg-slate-800 mb-3 overflow-hidden relative border border-slate-700/60 flex items-center justify-center text-slate-500 text-sm">
+              <img id="cardImage" src="" alt="View preview" class="w-full h-full object-cover hidden">
+              <div id="cardPlaceholder" class="text-center p-3">
+                <span class="text-4xl block mb-1">🏔️</span>
+                <span class="text-xs text-slate-400">Панорама заснеженных Альп над водой</span>
+              </div>
+            </div>
+
+            <p id="cardDesc" class="text-sm text-slate-300 leading-relaxed mb-4">
+              Въезд в Швейцарию. Огромные заснеженные двухтысячники Пилатус и Риги встают прямо над кристально чистым озером. Выходишь из машины на набережной — вид сшибает с ног без всяких экскурсий.
+            </p>
+
+            <div class="space-y-1.5 text-xs text-slate-300 border-t border-slate-800 pt-3">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Тип локации:</span>
+                <span id="cardType" class="font-medium text-white">Природа / Горы / Озеро</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Зимняя доступность:</span>
+                <span id="cardWinter" class="font-medium text-emerald-400">100% чистый автобан</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Что делать:</span>
+                <span id="cardAction" class="font-medium text-white">Прогулка по набережной, панорамные фото</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 pt-3 border-t border-slate-800 flex gap-2">
+            <a id="cardGmaps" href="https://maps.google.com" target="_blank" class="w-full text-center py-2 px-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-medium text-xs text-white transition flex items-center justify-center gap-1.5">
+              <span>📍</span> Открыть в Google Maps
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Mountain Detours Switcher -->
+        <div class="bg-[var(--card,#1e293b)] border border-amber-500/30 rounded-2xl p-4 shadow-lg">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-1.5">
+            <span>⚡</span> Готовы к трудностям? Экстремальные опции:
+          </h4>
+          <div class="space-y-2">
+            <button onclick="selectPoint(10)" class="w-full text-left p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 transition group">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white group-hover:text-amber-300">🏔️ Шамони-Монблан</span>
+                <span class="text-[10px] text-amber-400 font-mono">+1.5 ч</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-0.5">Подножие высшей горы Европы (4808м). Снежные ущелья и ледники.</p>
+            </button>
+            <button onclick="selectPoint(11)" class="w-full text-left p-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 transition group">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-bold text-white group-hover:text-amber-300">🌉 Виадук Мийо (Трасса А75)</span>
+                <span class="text-[10px] text-amber-400 font-mono">Вместо Роны</span>
+              </div>
+              <p class="text-[11px] text-slate-400 mt-0.5">Мост выше Эйфелевой башни (343м). Езда на машине буквально над облаками.</p>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const pointsData = [
+      {
+        id: 0,
+        badge: "Старт маршрута",
+        drive: "0 км",
+        title: "Берлин (Германия)",
+        icon: "🇩🇪",
+        desc: "Старт великого трипа. Упакованная машина, полный бак, настрой на юг к теплу.",
+        type: "Город отправления",
+        winter: "Стандартный автобан",
+        action: "Утренний выезд в 08:30–09:00",
+        gmaps: "https://www.google.com/maps/place/Berlin"
+      },
+      {
+        id: 1,
+        badge: "День 1 • Бавария",
+        drive: "~440 км (4.5 ч)",
+        title: "Крепость Кайзербург (Нюрнберг)",
+        icon: "🏰",
+        desc: "Массивная средневековая цитадель на высокой скале. Заезжаешь в город, поднимаешься на каменную стену крепости — под ногами весь старый город с черепичными крышами.",
+        type: "Каменная крепость на скале",
+        winter: "100% чистый автобан A9",
+        action: "Смотровая площадка цитадели, баварский ужин",
+        gmaps: "https://www.google.com/maps/place/Imperial+Castle+of+Nuremberg"
+      },
+      {
+        id: 2,
+        badge: "День 2 • Альпы",
+        drive: "~400 км (4.5 ч)",
+        title: "Озеро Люцерн и Альпийские пики",
+        icon: "🏔️",
+        desc: "Въезд в Швейцарию. Снизу кристальное озеро, над головой стеной встают заснеженные пики Альп (горы Пилатус и Риги). Контраст после равнин сносит крышу.",
+        type: "Альпы и ледниковое озеро",
+        winter: "Чищеные скоростные дороги Швейцарии",
+        action: "Прогулка по набережной с видом на заснеженные вершины",
+        gmaps: "https://www.google.com/maps/place/Lake+Lucerne"
+      },
+      {
+        id: 3,
+        badge: "День 3 • Замок на воде",
+        drive: "~200 км (2.5 ч)",
+        title: "Шильонский замок (Монтрё)",
+        icon: "🏰",
+        desc: "Каменный средневековый замок на скальном острове прямо в воде Женевского озера. Позади — отвесные скалы Альп со снегом. Считается одним из самых открыточных замков мира.",
+        type: "Замок на воде / Альпийское предгорье",
+        winter: "Трасса вдоль озера, снег чистят",
+        action: "Обойти замок по кромке воды, топовые фото",
+        gmaps: "https://www.google.com/maps/place/Chillon+Castle"
+      },
+      {
+        id: 4,
+        badge: "День 3 • Франция",
+        drive: "~85 км (1 ч)",
+        title: "Озеро и город Анси (Франция)",
+        icon: "🏔️",
+        desc: "Французский город у чистейшего бирюзового горного озера, зажатый между альпийскими хребтами. Посреди реки стоит старинный замок-тюрьма в форме каменного корабля.",
+        type: "Горное озеро и средневековый город",
+        winter: "Отличная французская трасса",
+        action: "Вечерний отдых после переезда через Альпы",
+        gmaps: "https://www.google.com/maps/place/Annecy"
+      },
+      {
+        id: 5,
+        badge: "День 4 • Древний Рим",
+        drive: "~340 км (3.5 ч)",
+        title: "Римский акведук Пон-дю-Гар",
+        icon: "🏛️",
+        desc: "Трехъярусный каменный мост-акведук I века н.э. высотой 49 метров (высота 16-этажки). Построен римлянами из циклопических каменных блоков без раствора. Визуально ошеломляет масштабом.",
+        type: "Античный мост-великан",
+        winter: "Теплый юг Франции (до +12...+15°C в феврале)",
+        action: "Прогулка по каньону под акведуком",
+        gmaps: "https://www.google.com/maps/place/Pont+du+Gard"
+      },
+      {
+        id: 6,
+        badge: "День 5 • Цитадель",
+        drive: "~240 км (2.5 ч)",
+        title: "Крепость Каркассон",
+        icon: "⚔️",
+        desc: "Самая большая крепость в Европе: 3 километра каменных стен, 52 башни, ров. Огромный город-цитадель. Вечером включается подсветка стен, вид словно из фильмов про осады замков.",
+        type: "Королевская каменная цитадель",
+        winter: "Трасса A61 без серпантинов",
+        action: "Подняться на стены, ночная панорама крепости",
+        gmaps: "https://www.google.com/maps/place/Cité+de+Carcassonne"
+      },
+      {
+        id: 7,
+        badge: "День 6 • Море и Пиренеи",
+        drive: "~140 км (1.5 ч)",
+        title: "Коллиур (Франция ➔ Море)",
+        icon: "🌊",
+        desc: "Точка, где горы Пиренеи падают прямо в Средиземное море. Каменный королевский замок на берегу, волны бьются о скалы, пляж, первый морской воздух после зимнего Берлина.",
+        type: "Берег Средиземного моря и замок",
+        winter: "Мягкий морской климат",
+        action: "Выйти на пляж, кофе с видом на волны и замок",
+        gmaps: "https://www.google.com/maps/place/Collioure"
+      },
+      {
+        id: 8,
+        badge: "День 6 • Испания",
+        drive: "~95 км (1 ч)",
+        title: "Жирона (Испания)",
+        icon: "🇪🇸",
+        desc: "Пересекаем границу с Испанией. Древний каменный город с крепостной стеной Passeig de la Muralla: идешь по гребню стены на высоте над крышами с панорамой Пиренеев на горизонте.",
+        type: "Крепостные стены и старый город",
+        winter: "Испанский автобан AP-7",
+        action: "Проход по гребню крепостной стены",
+        gmaps: "https://www.google.com/maps/place/Girona"
+      },
+      {
+        id: 9,
+        badge: "День 7 • Финал",
+        drive: "~130 км (2 ч)",
+        title: "Тосса-де-Мар ➔ Барселона",
+        icon: "🏖️",
+        desc: "Дикие скалистые бухты Коста-Брава с башнями крепости прямо над морем. Отсюда последний рывок 80 км — и вы въезжаете в ваш новый дом в Барселоне!",
+        type: "Крепость на утесе над морем + Финиш",
+        winter: "Побережье Каталонии (+16°C)",
+        action: "Финишная точка маршрута, победный заезд!",
+        gmaps: "https://www.google.com/maps/place/Tossa+de+Mar"
+      },
+      {
+        id: 10,
+        badge: "🏔️ Горный крюк: Экстрим",
+        drive: "+1.5 ч к маршруту",
+        title: "Шамони-Монблан (Chamonix Mont-Blanc)",
+        icon: "⛰️",
+        desc: "Для тех, кто готов к трудностям! Заезд в альпийское ущелье к подножию высочайшей горы Западной Европы — Монблан (4 808 м). Дорога через ущелье открыта зимой, кругом километровые ледники и скальные стены.",
+        type: "Высокогорье / Главный пик Европы",
+        winter: "Зимние дороги, требуется уверенное вождение на всесезонке",
+        action: "Подъехать к подножию ледника, вид на пик Монблан",
+        gmaps: "https://www.google.com/maps/place/Chamonix"
+      },
+      {
+        id: 11,
+        badge: "🌉 Высотный крюк: Мост в облаках",
+        drive: "Вместо трассы по долине",
+        title: "Виадук Мийо (Viaduc de Millau)",
+        icon: "🌁",
+        desc: "Вместо равнинной трассы поехать через Центральный горный массив Франции по трассе A75. Там находится самый высокий вантовый мост в мире: опора 343 метра (выше Эйфелевой башни!). Едешь на машине буквально над облаками через гигантский каньон.",
+        type: "Мост-гигант над каньоном Тарн",
+        winter: "Трасса на высоте 1000м (бывает боковой ветер и поземка)",
+        action: "Проезд по мосту над облаками + смотровая площадка",
+        gmaps: "https://www.google.com/maps/place/Millau+Viaduct"
+      }
+    ];
+
+    function selectPoint(idx) {
+      const p = pointsData[idx];
+      document.getElementById('cardBadge').innerText = p.badge;
+      document.getElementById('cardDrive').innerText = p.drive;
+      document.getElementById('cardTitle').innerText = p.title;
+      document.getElementById('cardDesc').innerText = p.desc;
+      document.getElementById('cardType').innerText = p.type;
+      document.getElementById('cardWinter').innerText = p.winter;
+      document.getElementById('cardAction').innerText = p.action;
+      document.getElementById('cardPlaceholder').innerHTML = `<span class="text-4xl block mb-1">${p.icon}</span><span class="text-xs text-slate-300 font-semibold">${p.type}</span>`;
+      document.getElementById('cardGmaps').href = p.gmaps;
+
+      // Colorize badge for detours
+      if (idx >= 10) {
+        document.getElementById('cardBadge').className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-400 border border-amber-500/30";
+      } else {
+        document.getElementById('cardBadge').className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/20 text-blue-400 border border-blue-500/30";
+      }
+    }
+
+    function filterRoute(mode) {
+      if (mode === 'mountains') {
+        selectPoint(10);
+      } else if (mode === 'castles') {
+        selectPoint(3);
+      } else {
+        selectPoint(2);
+      }
+    }
+
+    // Default to Alps
+    selectPoint(2);
+  </script>
+</body>
+</html>
