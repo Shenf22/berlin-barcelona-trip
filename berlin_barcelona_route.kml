@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Берлин - Барселона: Роудтрип через Альпы и Францию</name>
+    <description>Маршрут переезда: основные чекпоинты, горы, замки, море и альтернативные крюки.</description>
+    
+    <!-- Стили маркеров -->
+    <Style id="mainPoint">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/ms/icons/blue-dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="mountainPoint">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="finishPoint">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+
+    <!-- Основные чекпоинты -->
+    <Folder>
+      <name>Основной маршрут (7 дней)</name>
+      
+      <Placemark>
+        <name>0. Берлин (Старт)</name>
+        <description>Точка старта роуд-трипа.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>13.404954,52.520008,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>1. Крепость Кайзербург (Нюрнберг)</name>
+        <description>День 1: Массивная каменная крепость на скале над старым городом.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>11.075833,49.457778,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>2. Озеро Люцерн и Альпы (Швейцария)</name>
+        <description>День 2: Заснеженные альпийские пики Пилатус и Риги прямо над водой.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>8.309307,47.050168,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>3. Шильонский замок (Château de Chillon)</name>
+        <description>День 3: Каменный средневековый замок на воде Женевского озера.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>6.927500,46.414167,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>4. Анси (Annecy, Франция)</name>
+        <description>День 3 (вечер): Альпийский город у бирюзового горного озера с замком-тюрьмой на реке.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>6.129384,45.899247,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>5. Акведук Пон-дю-Гар (Pont du Gard)</name>
+        <description>День 4: 49-метровый римский каменный мост-акведук I века н.э. над рекой.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>4.535000,43.947500,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>6. Крепость Каркассон (Cité de Carcassonne)</name>
+        <description>День 5: Самая большая цитадель Европы: 3 км двойных стен, 52 башни, ров.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>2.363611,43.206389,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>7. Коллиур (Collioure, Средиземное море)</name>
+        <description>День 6: Скалы Пиренеев уходят в море, королевский замок на пляже.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>3.081667,42.525000,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>8. Жирона (Girona, Испания)</name>
+        <description>День 6 (вечер): Крепостная стена Passeig de la Muralla над крышами старого города.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>2.821426,41.979401,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>9. Тосса-де-Мар (Tossa de Mar)</name>
+        <description>День 7: Средневековая крепость на скале прямо над пляжем Коста-Брава.</description>
+        <styleUrl>#mainPoint</styleUrl>
+        <Point>
+          <coordinates>2.932778,41.722500,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>10. Барселона (Финиш)</name>
+        <description>Новый дом!</description>
+        <styleUrl>#finishPoint</styleUrl>
+        <Point>
+          <coordinates>2.173403,41.385064,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+
+    <!-- Горные и видовые отклонения -->
+    <Folder>
+      <name>Горные крюки и альтернативы (+1 день / по желанию)</name>
+      
+      <Placemark>
+        <name>★ Шамони-Монблан (Chamonix Mont-Blanc)</name>
+        <description>Подножие пика Монблан (4 808 м). Километровые ледники и альпийские скалы.</description>
+        <styleUrl>#mountainPoint</styleUrl>
+        <Point>
+          <coordinates>6.869400,45.923700,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>★ Ущелье Лаутербруннен (Lauterbrunnen)</name>
+        <description>Швейцарское ущелье с отвесными скалами и водопадами между вершинами Эйгер и Юнгфрау.</description>
+        <styleUrl>#mountainPoint</styleUrl>
+        <Point>
+          <coordinates>7.907700,46.593500,0</coordinates>
+        </Point>
+      </Placemark>
+
+      <Placemark>
+        <name>★ Виадук Мийо (Viaduc de Millau)</name>
+        <description>Самый высокий вантовый мост в мире (опора 343 м). Трасса A75 через горы буквально над облаками.</description>
+        <styleUrl>#mountainPoint</styleUrl>
+        <Point>
+          <coordinates>3.021944,44.077222,0</coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
