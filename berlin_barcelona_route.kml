@@ -1,168 +1,185 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
-    <name>Берлин - Барселона: Роудтрип через Альпы и Францию</name>
-    <description>Маршрут переезда: основные чекпоинты, горы, замки, море и альтернативные крюки.</description>
+    <name>Берлин - Барселона: Все точки и смотровые площадки</name>
+    <description>Интерактивная карта переезда: фото, координаты и приоритеты.</description>
     
-    <!-- Стили маркеров -->
-    <Style id="mainPoint">
-      <IconStyle>
-        <scale>1.2</scale>
-        <Icon>
-          <href>http://maps.google.com/mapfiles/ms/icons/blue-dot.png</href>
-        </Icon>
-      </IconStyle>
-    </Style>
-    <Style id="mountainPoint">
+    <Style id="tier1">
       <IconStyle>
         <scale>1.3</scale>
-        <Icon>
-          <href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href>
-        </Icon>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon>
       </IconStyle>
     </Style>
-    <Style id="finishPoint">
+    <Style id="tier2">
       <IconStyle>
-        <scale>1.3</scale>
-        <Icon>
-          <href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>
-        </Icon>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/blue-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="tier3">
+      <IconStyle>
+        <scale>1.0</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="finish">
+      <IconStyle>
+        <scale>1.4</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href></Icon>
       </IconStyle>
     </Style>
 
-    <!-- Основные чекпоинты -->
     <Folder>
-      <name>Основной маршрут (7 дней)</name>
+      <name>🔥 Tier 1: Высший приоритет (Мастхэв)</name>
       
       <Placemark>
-        <name>0. Берлин (Старт)</name>
-        <description>Точка старта роуд-трипа.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>13.404954,52.520008,0</coordinates>
-        </Point>
+        <name>★ Шамони и пик Монблан (4808 м)</name>
+        <description><![CDATA[
+          <h3>Шамони-Монблан</h3>
+          <p><b>Высшая точка Европы (4 808 м).</b> Гигантские ледники, отвесные скалы.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Mont_Blanc_Aiguille.jpg/330px-Mont_Blanc_Aiguille.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier1</styleUrl>
+        <Point><coordinates>6.8694,45.9237,0</coordinates></Point>
       </Placemark>
 
       <Placemark>
-        <name>1. Крепость Кайзербург (Нюрнберг)</name>
-        <description>День 1: Массивная каменная крепость на скале над старым городом.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>11.075833,49.457778,0</coordinates>
-        </Point>
+        <name>★ Виадук Мийо (Мост выше Эйфелевой башни)</name>
+        <description><![CDATA[
+          <h3>Виадук Мийо</h3>
+          <p><b>Самый высокий вантовый мост в мире (опора 343 м).</b> Езда буквально над облаками через каньон Тарн.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/en/thumb/a/a6/ViaducdeMillau.jpg/330px-ViaducdeMillau.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier1</styleUrl>
+        <Point><coordinates>3.0219,44.0772,0</coordinates></Point>
       </Placemark>
 
       <Placemark>
-        <name>2. Озеро Люцерн и Альпы (Швейцария)</name>
-        <description>День 2: Заснеженные альпийские пики Пилатус и Риги прямо над водой.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>8.309307,47.050168,0</coordinates>
-        </Point>
+        <name>★ Крепость Каркассон</name>
+        <description><![CDATA[
+          <h3>Cité de Carcassonne</h3>
+          <p><b>Крупнейшая крепость Европы.</b> 3 км двойных каменных стен, 52 башни, ров. Вечером грандиозная подсветка.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/1_carcassonne_aerial_2016.jpg/330px-1_carcassonne_aerial_2016.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier1</styleUrl>
+        <Point><coordinates>2.3636,43.2064,0</coordinates></Point>
       </Placemark>
 
       <Placemark>
-        <name>3. Шильонский замок (Château de Chillon)</name>
-        <description>День 3: Каменный средневековый замок на воде Женевского озера.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>6.927500,46.414167,0</coordinates>
-        </Point>
+        <name>★ Римский акведук Пон-дю-Гар</name>
+        <description><![CDATA[
+          <h3>Пон-дю-Гар (I век н.э.)</h3>
+          <p><b>49-метровый каменный мост-великан</b> над рекой Гардон. Построен римлянами без раствора.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Pont_du_Gard_BLS.jpg/330px-Pont_du_Gard_BLS.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier1</styleUrl>
+        <Point><coordinates>4.5350,43.9475,0</coordinates></Point>
       </Placemark>
 
       <Placemark>
-        <name>4. Анси (Annecy, Франция)</name>
-        <description>День 3 (вечер): Альпийский город у бирюзового горного озера с замком-тюрьмой на реке.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>6.129384,45.899247,0</coordinates>
-        </Point>
-      </Placemark>
-
-      <Placemark>
-        <name>5. Акведук Пон-дю-Гар (Pont du Gard)</name>
-        <description>День 4: 49-метровый римский каменный мост-акведук I века н.э. над рекой.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>4.535000,43.947500,0</coordinates>
-        </Point>
-      </Placemark>
-
-      <Placemark>
-        <name>6. Крепость Каркассон (Cité de Carcassonne)</name>
-        <description>День 5: Самая большая цитадель Европы: 3 км двойных стен, 52 башни, ров.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>2.363611,43.206389,0</coordinates>
-        </Point>
-      </Placemark>
-
-      <Placemark>
-        <name>7. Коллиур (Collioure, Средиземное море)</name>
-        <description>День 6: Скалы Пиренеев уходят в море, королевский замок на пляже.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>3.081667,42.525000,0</coordinates>
-        </Point>
-      </Placemark>
-
-      <Placemark>
-        <name>8. Жирона (Girona, Испания)</name>
-        <description>День 6 (вечер): Крепостная стена Passeig de la Muralla над крышами старого города.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>2.821426,41.979401,0</coordinates>
-        </Point>
-      </Placemark>
-
-      <Placemark>
-        <name>9. Тосса-де-Мар (Tossa de Mar)</name>
-        <description>День 7: Средневековая крепость на скале прямо над пляжем Коста-Брава.</description>
-        <styleUrl>#mainPoint</styleUrl>
-        <Point>
-          <coordinates>2.932778,41.722500,0</coordinates>
-        </Point>
-      </Placemark>
-
-      <Placemark>
-        <name>10. Барселона (Финиш)</name>
-        <description>Новый дом!</description>
-        <styleUrl>#finishPoint</styleUrl>
-        <Point>
-          <coordinates>2.173403,41.385064,0</coordinates>
-        </Point>
+        <name>★ Шильонский замок (Женевское озеро)</name>
+        <description><![CDATA[
+          <h3>Château de Chillon</h3>
+          <p><b>Каменный замок прямо на воде</b> Женевского озера на фоне заснеженных альпийских хребтов.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg/330px-001_Chateau_de_Chillon_and_Dents_du_Midi_Photo_by_Giles_Laurent.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier1</styleUrl>
+        <Point><coordinates>6.9275,46.4142,0</coordinates></Point>
       </Placemark>
     </Folder>
 
-    <!-- Горные и видовые отклонения -->
     <Folder>
-      <name>Горные крюки и альтернативы (+1 день / по желанию)</name>
+      <name>✨ Tier 2: Высокий приоритет (Очень зрелищно)</name>
       
       <Placemark>
-        <name>★ Шамони-Монблан (Chamonix Mont-Blanc)</name>
-        <description>Подножие пика Монблан (4 808 м). Километровые ледники и альпийские скалы.</description>
-        <styleUrl>#mountainPoint</styleUrl>
-        <Point>
-          <coordinates>6.869400,45.923700,0</coordinates>
-        </Point>
+        <name>Ущелье Лаутербруннен (Швейцария)</name>
+        <description><![CDATA[
+          <h3>Долина 72 водопадов</h3>
+          <p>Отвесные километровые скалы, вокруг пики Эйгер, Мёнх и Юнгфрау. Прообраз Ривенделла из Властелина Колец.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/1_lauterbrunnen_valley_wengen_2022.jpg/330px-1_lauterbrunnen_valley_wengen_2022.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier2</styleUrl>
+        <Point><coordinates>7.9077,46.5935,0</coordinates></Point>
       </Placemark>
 
       <Placemark>
-        <name>★ Ущелье Лаутербруннен (Lauterbrunnen)</name>
-        <description>Швейцарское ущелье с отвесными скалами и водопадами между вершинами Эйгер и Юнгфрау.</description>
-        <styleUrl>#mountainPoint</styleUrl>
-        <Point>
-          <coordinates>7.907700,46.593500,0</coordinates>
-        </Point>
+        <name>Рейнский водопад (Rheinfall)</name>
+        <description><![CDATA[
+          <h3>Самый мощный водопад Европы</h3>
+          <p>Стена ревущей воды шириной 150 метров прямо на границе Германии и Швейцарии.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/26/SBB_RABe_514_DTZ_Rheinfall.jpg/330px-SBB_RABe_514_DTZ_Rheinfall.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier2</styleUrl>
+        <Point><coordinates>8.6156,47.6778,0</coordinates></Point>
       </Placemark>
 
       <Placemark>
-        <name>★ Виадук Мийо (Viaduc de Millau)</name>
-        <description>Самый высокий вантовый мост в мире (опора 343 м). Трасса A75 через горы буквально над облаками.</description>
-        <styleUrl>#mountainPoint</styleUrl>
-        <Point>
-          <coordinates>3.021944,44.077222,0</coordinates>
-        </Point>
+        <name>Коллиур (Средиземное море и Пиренеи)</name>
+        <description><![CDATA[
+          <h3>Королевский замок на берегу моря</h3>
+          <p>Точка, где горы уходят в море. Скалы, волны, первый морской воздух.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/14/Collioure_002.jpg/330px-Collioure_002.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier2</styleUrl>
+        <Point><coordinates>3.0817,42.5250,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Жирона (Крепостная стена Passeig de la Muralla)</name>
+        <description><![CDATA[
+          <h3>Крепостной гребень над городом</h3>
+          <p>Пеший проход по высокой древней стене над крышами города с видом на горы.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cd/Girona_des_de_l_aire_edited.jpg/330px-Girona_des_de_l_aire_edited.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier2</styleUrl>
+        <Point><coordinates>2.8214,41.9794,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Тосса-де-Мар (Крепость над морем)</name>
+        <description><![CDATA[
+          <h3>Башни на скале Коста-Брава</h3>
+          <p>Средневековая крепость прямо на утесе над бирюзовой морской бухтой.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/07/Tossa_de_Mar_-_center.jpg/330px-Tossa_de_Mar_-_center.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier2</styleUrl>
+        <Point><coordinates>2.9328,41.7225,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>💡 Tier 3: Бонусные точки по пути</name>
+      
+      <Placemark>
+        <name>Театр-музей Сальвадора Дали (Фигерас)</name>
+        <description><![CDATA[
+          <h3>Музей Дали</h3>
+          <p>Безумное здание с гигантскими яйцами на крыше прямо у скоростной трассы AP-7 при въезде в Испанию.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7c/Teater_Museu_Gala_Salvador_Dali_building_from_outside.jpg/330px-Teater_Museu_Gala_Salvador_Dali_building_from_outside.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier3</styleUrl>
+        <Point><coordinates>2.9597,42.2680,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Крепость Кайзербург (Нюрнберг)</name>
+        <description><![CDATA[
+          <h3>Баварская цитадель</h3>
+          <p>Каменная крепость на высокой скале над старым городом.</p>
+          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Nuernberg_Burg_Panorama_PtGUI.jpg/330px-Nuernberg_Burg_Panorama_PtGUI.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail" width="300" />
+        ]]></description>
+        <styleUrl>#tier3</styleUrl>
+        <Point><coordinates>11.0758,49.4578,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Барселона (Финиш)</name>
+        <description><![CDATA[
+          <h3>Добро пожаловать в новый дом! 🎉</h3>
+          <p>Конечная точка великого переезда.</p>
+        ]]></description>
+        <styleUrl>#finish</styleUrl>
+        <Point><coordinates>2.1734,41.3851,0</coordinates></Point>
       </Placemark>
     </Folder>
   </Document>
