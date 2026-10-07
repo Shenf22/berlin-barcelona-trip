@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>ROADBOOK ? Berlin ? Barcelona</title>
+  <title>ROADBOOK • Berlin ➔ Barcelona</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -37,14 +37,14 @@
   <header class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-3 pb-2.5">
     <div class="max-w-xl mx-auto flex items-center justify-between">
       <div>
-        <span class="text-[10px] font-black uppercase tracking-widest text-blue-400 block">???????? ????????????</span>
+        <span class="text-[10px] font-black uppercase tracking-widest text-blue-400 block">ДОРОЖНЫЙ ПУТЕВОДИТЕЛЬ</span>
         <h1 class="text-base font-black text-white tracking-tight" id="headerTitle">
-          Berlin ? W?rzburg
+          Berlin ➔ Würzburg
         </h1>
       </div>
       <div>
         <span id="headerMetrics" class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-1 rounded-full">
-          492 ?? ? 5.0 ?
+          492 км • 5.0 ч
         </span>
       </div>
     </div>
@@ -52,42 +52,72 @@
     <!-- HORIZONTAL DAY SWITCHER PILLS -->
     <nav class="max-w-xl mx-auto mt-2.5 flex items-center justify-between gap-1 overflow-x-auto no-scrollbar pb-0.5">
       <button onclick="selectDay(1)" id="btn-day-1" class="day-pill active flex-1 py-1.5 px-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold text-xs text-center transition whitespace-nowrap">
-        ???? 1
+        День 1
       </button>
       <button onclick="selectDay(2)" id="btn-day-2" class="day-pill flex-1 py-1.5 px-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold text-xs text-center transition whitespace-nowrap">
-        ???? 2
+        День 2
       </button>
       <button onclick="selectDay(3)" id="btn-day-3" class="day-pill flex-1 py-1.5 px-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold text-xs text-center transition whitespace-nowrap">
-        ???? 3
+        День 3
       </button>
       <button onclick="selectDay(4)" id="btn-day-4" class="day-pill flex-1 py-1.5 px-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold text-xs text-center transition whitespace-nowrap">
-        ???? 4
+        День 4
       </button>
       <button onclick="selectDay(5)" id="btn-day-5" class="day-pill flex-1 py-1.5 px-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 font-bold text-xs text-center transition whitespace-nowrap">
-        ???? 5
+        День 5
       </button>
     </nav>
   </header>
 
   <!-- MAIN SCROLLABLE CONTAINER -->
-  <main class="max-w-xl mx-auto w-full px-4 py-4 flex-1 space-y-6">
-
-    <!-- ========================================== -->
-    <!-- ???? 1: BERLIN ? W?RZBURG                  -->
+  <main class="max-w-xl mx-auto w-full px-4 py-4 flex-1 space-y-6">    <!-- ========================================== -->
+    <!-- ДЕНЬ 1: BERLIN ➔ WÜRZBURG                  -->
     <!-- ========================================== -->
     <div id="day-1" class="day-content space-y-5">
       
       <!-- HERO BANNER -->
       <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
-        <img src="images/wuerzburg_residenz_ext.jpg" alt="W?rzburger Residenz" class="w-full h-52 object-cover">
+        <img src="images/wuerzburg_residenz_ext.jpg" alt="Würzburger Residenz" class="w-full h-52 object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">???? 1 ? 492 ?? ? ~5.0 ?</span>
+          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">ЭТАП 1 • 492 КМ • ~5.0 Ч</span>
           <h2 class="text-xl font-black text-white leading-tight">
-            ?????? ?? ??: ?? ????????? ????????? ?? ?????? ?????????
+            Разгон на юг: от монумента Наполеону до мостов Франконии
           </h2>
           <p class="text-xs text-slate-300 mt-1">
-            ?????????? ??????? A9, ?????? ? Leipzig ? ???????? ??????? ???????????? ????.
+            Скоростной автобан A9, колосс в Leipzig и барочная столица франконского вина.
           </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DETOUR CALCULATOR -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <span>⚙️</span> Остановки и отклонения (День 1):
+          </h3>
+          <span id="calcDay1" class="text-xs font-mono font-bold text-emerald-400">492 км • 5 ч 00 мин</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 cursor-pointer">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" checked disabled class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Базовый автобан (A115 ➔ A9 ➔ A4 ➔ A7 ➔ A3)</strong>
+                <span class="text-slate-400 text-[11px]">Berlin ➔ Würzburg (чистый перегон)</span>
+              </div>
+            </div>
+            <span class="text-slate-400 font-mono">485 км</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkLeipzig" checked onchange="recalcDay1()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд к Völkerschlachtdenkmal (Leipzig)</strong>
+                <span class="text-slate-400 text-[11px]">Съезд с автобана A9 ровно на 10 минут • колосс 91 м</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+7 км / +45 мин</span>
+          </label>
         </div>
       </div>
 
@@ -95,18 +125,18 @@
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
           <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <span>??</span> ??????? ?????
+            <span>📋</span> Паспорт этапа
           </h3>
-          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">?????? ?????? ????</span>
+          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">Легкая зимняя езда</span>
         </div>
         <div class="grid grid-cols-2 gap-2 text-xs">
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">??????</span>
-            <span class="font-bold text-white">A115 ? A9 ? A4 ? A7 ? A3</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Трассы</span>
+            <span class="font-bold text-white">A115 ➔ A9 ➔ A4 ➔ A7 ➔ A3</span>
           </div>
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">?????? ?????</span>
-            <span class="font-bold text-white">????????? (???????? DE)</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Оплата дорог</span>
+            <span class="font-bold text-white">Бесплатно (Автобаны DE)</span>
           </div>
         </div>
       </div>
@@ -114,28 +144,28 @@
       <!-- TIMELINE CARD -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
         <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-          <span>??</span> ????????? ???? ???
+          <span>⏱️</span> Почасовой план дня
         </h3>
         <div class="space-y-2.5 text-xs text-slate-300 relative pl-4 border-l border-slate-800">
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">08:30</strong> ? ????? ?? Berlin ? ?????? ???????, ????? ?? ??????? A9 ?? ??.
+            <strong class="text-white">08:30</strong> — Старт из Berlin с полной машиной, выезд на автобан A9 на юг.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">10:45 ? 11:30</strong> ? <strong>V?lkerschlachtdenkmal (Leipzig)</strong>: ????? ? ?????? ?? 10 ???, ?????? 91-????????? ?????????? ???????, ???? ??? ??????.
+            <strong class="text-amber-300">10:45 – 11:30</strong> — <strong>Völkerschlachtdenkmal (Leipzig)</strong>: съезд с трассы на 10 мин, осмотр 91-метрового гранитного гиганта, парк для собаки.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-slate-600"></div>
-            <strong class="text-white">11:30 ? 14:30</strong> ? ??????? ?? A4/A7 ????? ????? ????????, ???? ?? ??????.
+            <strong class="text-white">11:30 – 14:30</strong> — Перегон по A4/A7 через холмы Тюрингии, обед на трассе.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">14:30 ? 16:30</strong> ? ???????? ? <strong>W?rzburg</strong>, ?????????, ?????? ??????????? <strong>W?rzburger Residenz</strong> ? ??????? ???????.
+            <strong class="text-white">14:30 – 16:30</strong> — Прибытие в <strong>Würzburg</strong>, заселение, осмотр грандиозной <strong>Würzburger Residenz</strong> и плафона Тьеполо.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-emerald-500"></div>
-            <strong class="text-emerald-300">17:00 ? ?????</strong> ? ???????? ?? ???????? ????? <strong>Alte Mainbr?cke</strong> ? ??????? ???? ? ????????? ???????? Marienberg.
+            <strong class="text-emerald-300">17:00 – Вечер</strong> — Прогулка по древнему мосту <strong>Alte Mainbrücke</strong> с бокалом вина и панорамой крепости Marienberg.
           </div>
         </div>
       </div>
@@ -146,42 +176,42 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">1</span>
             <div>
-              <h4 class="text-sm font-black text-white">V?lkerschlachtdenkmal (Leipzig)</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? A9 ????? ?? 10 ????? ? 185 ?? ?? ???????</span>
+              <h4 class="text-sm font-black text-white">Völkerschlachtdenkmal (Leipzig)</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с A9 ровно на 10 минут • 185 км от Берлина</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=V%C3%B6lkerschlachtdenkmal+Leipzig" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/leipzig_monument_ext.jpg" alt="V?lkerschlachtdenkmal exterior" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????? 91 ? ???????</span>
+            <img src="images/leipzig_monument_ext.jpg" alt="Völkerschlachtdenkmal exterior" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Высота 91 м снаружи</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/leipzig_monument_dome.jpg" alt="V?lkerschlachtdenkmal dome" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????????? ??? ?????????</span>
+            <img src="images/leipzig_monument_dome.jpg" alt="Völkerschlachtdenkmal dome" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Купольный зал исполинов</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????? ????????? ???????? ? ?????? (?????? 91 ?, ??? ????? 300 000 ????). ???????? ??? ????????????? ???? ??????? ???????????. ????? ??? ? ?????????? ?????????? ???????.
+          Самый массивный памятник в Европе (высота 91 м, вес более 300 000 тонн). Выглядит как циклопический храм древней цивилизации. Перед ним — гигантский отражающий бассейн («Озеро слез»).
         </p>
 
         <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-1">
-          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">?? ???????????? ????:</strong>
-          ???????? ????? ????? 100 ??? (1913 ?.) ?? ????? ?????? ???????? 1813 ????, ??? ??????? ?????? ??????, ???????, ??????? ? ?????? ???????? ??????? ?????????, ????? ????? ?????.
+          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">📜 Исторический факт:</strong>
+          Построен ровно через 100 лет (1913 г.) на месте «Битвы народов» 1813 года, где союзные войска России, Пруссии, Австрии и Швеции наголову разбили Наполеона, решив исход войны.
         </div>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parkplatz V?lkerschlachtdenkmal</strong> (? ?????????, ?????????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parkplatz Völkerschlachtdenkmal</strong> (у монумента, бесплатно)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 45 ???</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 45 мин</span>
         </div>
       </div>
 
@@ -191,42 +221,42 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">2</span>
             <div>
-              <h4 class="text-sm font-black text-white">W?rzburger Residenz (??????)</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? W?rzburg ? ????? ????????</span>
+              <h4 class="text-sm font-black text-white">Würzburger Residenz (ЮНЕСКО)</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Центр Würzburg • Финиш перегона</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=W%C3%BCrzburger+Residenz" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/wuerzburg_residenz_ext.jpg" alt="W?rzburger Residenz facade" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? ?????? ?? Residenzplatz</span>
+            <img src="images/wuerzburg_residenz_ext.jpg" alt="Würzburger Residenz facade" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Фасад дворца на Residenzplatz</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/wuerzburg_tiepolo_ceiling.jpg" alt="Tiepolo ceiling fresco" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????? ??????? (600 ??. ?)</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Фреска Тьеполо (600 кв. м)</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ???????? ?????? ??????-????????? XVIII ????. ???????? ???????? ????????? ?????? ??? ?????? ???????, ?? ??????? ???????? <strong>????? ??????? ??????? ?????????? ?????? ? ????</strong> ?????? ???????? ??????? (1753 ?.).
+          Барочный дворец князей-епископов XVIII века. Парадная лестница перекрыта сводом без единой колонны, на котором написана <strong>самая большая цельная потолочная фреска в мире</strong> работы Джованни Тьеполо (1753 г.).
         </p>
 
         <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-1">
-          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">?? ???? 1945 ????:</strong>
-          ??? ????????????? 1945 ???? ???????? ??? ???????? ?? 90%, ?? ???????? ???? ???????? ???? ????????? ??????? ????? ? ???? ??????? ???????.
+          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">📜 Чудо 1945 года:</strong>
+          При бомбардировке 1945 года Вюрцбург был разрушен на 90%, но каменный свод выдержал удар рухнувших горящих балок и спас роспись Тьеполо.
         </div>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Residenzplatz</strong> (???????? ??????? ????? ????? ??????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Residenzplatz</strong> (огромная площадь прямо перед входом)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 1 ???</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 1 час</span>
         </div>
       </div>
 
@@ -236,43 +266,41 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">3</span>
             <div>
-              <h4 class="text-sm font-black text-white">Alte Mainbr?cke & Festung Marienberg</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">?????????? ????? W?rzburg</span>
+              <h4 class="text-sm font-black text-white">Alte Mainbrücke & Festung Marienberg</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Пешеходный центр Würzburg</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Alte+Mainbr%C3%BCcke+W%C3%BCrzburg" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/wuerzburg_alte_mainbruecke.jpg" alt="Alte Mainbr?cke" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????? ???? ?? ???????? XV ?.</span>
+            <img src="images/wuerzburg_alte_mainbruecke.jpg" alt="Alte Mainbrücke" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Каменный мост со статуями XV в.</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/wuerzburg_marienberg.jpg" alt="Festung Marienberg" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????? Marienberg ?? ?????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Крепость Marienberg на скале</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ??????? ???????? ???? ????? ???? ???? ?? ???????? ??????? ? ??????. ??????? ???????? ????? ????? ???? ????? ? ?????????? ???????? (???????? <em>Br?ckenschoppen</em>) ? ???????? ??????? ??? ????????? ?? ?????.
+          Древний каменный мост через реку Майн со статуями королей и святых. Вечером горожане берут бокал вина прямо в прибрежных тавернах (традиция <em>Brückenschoppen</em>) и любуются закатом над крепостью на скале.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ??????? ? ?????????? ????????</span>
-            <strong>Parkhaus Markt</strong> (?????????? ????????? ??????? ??? ?????? ? ??????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ НОЧЕВКА И БЕЗОПАСНАЯ ПАРКОВКА</span>
+            <strong>Parkhaus Markt</strong> (охраняемый подземный паркинг для машины с вещами)
           </div>
         </div>
       </div>
 
-    </div>
-
-    <!-- ========================================== -->
-    <!-- ???? 2: W?RZBURG ? LAUTERBRUNNEN           -->
+    </div>    <!-- ========================================== -->
+    <!-- ДЕНЬ 2: WÜRZBURG ➔ LAUTERBRUNNEN           -->
     <!-- ========================================== -->
     <div id="day-2" class="day-content hidden space-y-5">
       
@@ -280,13 +308,55 @@
       <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
         <img src="images/lauterbrunnen_valley_snow.jpg" alt="Lauterbrunnen valley snow" class="w-full h-52 object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">???? 2 ? 534 ?? ? ~5.5 ?</span>
+          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">ЭТАП 2 • 534 КМ • ~5.5 Ч</span>
           <h2 class="text-xl font-black text-white leading-tight">
-            ?? ????????????? ?????? ????? ?? ??? ??????????? ???????
+            Из средневековой сказки прямо на дно ледникового каньона
           </h2>
           <p class="text-xs text-slate-300 mt-1">
-            ????????? ?????? ?????????? ????, ???????? ????? Thunersee ? ???????????? ????? ????.
+            Ротенбург внутри крепостных стен, лазурное озеро Thunersee и километровые скалы Альп.
           </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DETOUR CALCULATOR -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <span>⚙️</span> Остановки и отклонения (День 2):
+          </h3>
+          <span id="calcDay2" class="text-xs font-mono font-bold text-emerald-400">534 км • 5 ч 30 мин</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 cursor-pointer">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" checked disabled class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Базовый автобан (A7 ➔ A81 ➔ A2 Basel ➔ A1 ➔ A6 ➔ A8)</strong>
+                <span class="text-slate-400 text-[11px]">Würzburg ➔ Lauterbrunnen</span>
+              </div>
+            </div>
+            <span class="text-slate-400 font-mono">518 км</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkRothenburg" checked onchange="recalcDay2()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд в Rothenburg ob der Tauber</strong>
+                <span class="text-slate-400 text-[11px]">Съезд с трассы A7 на 10 минут • средневековый город в стенах</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+10 км / +1.5 ч</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkOberhofen" checked onchange="recalcDay2()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Остановка у Schloss Oberhofen & Thunersee</strong>
+                <span class="text-slate-400 text-[11px]">Замок на воде на набережной озера Тун</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+6 км / +30 мин</span>
+          </label>
         </div>
       </div>
 
@@ -294,18 +364,18 @@
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
           <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <span>??</span> ??????? ?????
+            <span>📋</span> Паспорт этапа
           </h3>
-          <span class="text-[11px] font-mono text-amber-400 font-bold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/50">????? ? ????? (??????? ??????)</span>
+          <span class="text-[11px] font-mono text-amber-400 font-bold bg-amber-950/80 px-2 py-0.5 rounded border border-amber-800/50">Въезд в Альпы (чищеные трассы)</span>
         </div>
         <div class="grid grid-cols-2 gap-2 text-xs">
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">??????</span>
-            <span class="font-bold text-white">A7 ? A81 ? A2 (Basel) ? A1 ? A6 ? A8</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Трассы</span>
+            <span class="font-bold text-white">A7 ➔ A81 ➔ A2 (Basel) ➔ A1 ➔ A6 ➔ A8</span>
           </div>
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">?????? / ?????????</span>
-            <span class="font-bold text-white">??????????? E-Vignette (??????)</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Оплата / Документы</span>
+            <span class="font-bold text-white">Швейцарская E-Vignette (онлайн)</span>
           </div>
         </div>
       </div>
@@ -313,28 +383,28 @@
       <!-- TIMELINE CARD -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
         <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-          <span>??</span> ????????? ???? ???
+          <span>⏱️</span> Почасовой план дня
         </h3>
         <div class="space-y-2.5 text-xs text-slate-300 relative pl-4 border-l border-slate-800">
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">08:30</strong> ? ????? ?? W?rzburg ?? ???????? A7 ?? ??.
+            <strong class="text-white">08:30</strong> — Выезд из Würzburg по автобану A7 на юг.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">09:15 ? 10:45</strong> ? <strong>Rothenburg ob der Tauber</strong>: ????? ????? ?? 10 ???, ??????????? ??????????? Pl?nlein, ???????? ?? ?????? ?????????? ???????.
+            <strong class="text-amber-300">09:15 – 10:45</strong> — <strong>Rothenburg ob der Tauber</strong>: съезд ровно на 10 мин, открыточный перекресток Plönlein, прогулка по крытой крепостной галерее.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-slate-600"></div>
-            <strong class="text-white">10:45 ? 13:30</strong> ? ?????????? ??????? A81 ? ??????? ????????? (???? Basel, ??????? ?????).
+            <strong class="text-white">10:45 – 13:30</strong> — Скоростной автобан A81 к границе Швейцарии (пост Basel, транзит вещей).
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">14:45 ? 15:15</strong> ? <strong>Schloss Oberhofen & Thunersee</strong>: ????????? ?? ?????????? ????? ???, ????? ?? ???? ?? ???? ????? ??????.
+            <strong class="text-white">14:45 – 15:15</strong> — <strong>Schloss Oberhofen & Thunersee</strong>: остановка на набережной озера Тун, замок на воде на фоне стены Эйгера.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-emerald-500"></div>
-            <strong class="text-emerald-300">15:45 ? ?????</strong> ? ???????? ? <strong>Lauterbrunnen</strong>. ???????? ?????? ? <em>Parkhaus Lauterbrunnen</em>, ???????? ???????? ??? 300-???????? ????????? <strong>Staubbachfall</strong>.
+            <strong class="text-emerald-300">15:45 – Вечер</strong> — Прибытие в <strong>Lauterbrunnen</strong>. Парковка машины в <em>Parkhaus Lauterbrunnen</em>, вечерняя прогулка под 300-метровым водопадом <strong>Staubbachfall</strong>.
           </div>
         </div>
       </div>
@@ -346,41 +416,41 @@
             <span class="badge-num">4</span>
             <div>
               <h4 class="text-sm font-black text-white">Rothenburg ob der Tauber</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? A7 ?? 10 ????? ? 65 ?? ?? ?????????</span>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с A7 на 10 минут • 65 км от Вюрцбурга</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Rothenburg+ob+der+Tauber" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/rothenburg_ploenlein.jpg" alt="Rothenburg Pl?nlein" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">??????????? ??????????? Pl?nlein</span>
+            <img src="images/rothenburg_ploenlein.jpg" alt="Rothenburg Plönlein" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Открыточный перекресток Plönlein</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/rothenburg_wall_walk.jpg" alt="Rothenburg wall walk" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????? ?????????? ????? Stadtmauer</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Крытая крепостная стена Stadtmauer</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????? ????????????? ????????????? ????? ????????. ????????? ??????? ???????? ?????? XIV ???? ? 42 ???????. ???????? ???????????? ???????? ? ??????? ? ?????? ??????? ? ??????? ????????.
+          Самый сохранившийся средневековый город Германии. Полностью окружен каменной стеной XIV века с 42 башнями. Никакого современного асфальта и рекламы — только фахверк и мощеные мостовые.
         </p>
 
         <div class="bg-slate-950/80 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-1">
-          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">?? ??????????? ??????? (1631 ?.):</strong>
-          ?? ????? ?????????????? ????? ????? ??? ?????? ????????????, ??????? ????? ?????? ????? ???? ??????? 3.25 ????? ?? ???? ? ????????????? ?????.
+          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">📜 «Мастерский глоток» (1631 г.):</strong>
+          Во время Тридцатилетней войны город был спасен бургомистром, который выпил залпом кубок вина объемом 3.25 литра на спор с фельдмаршалом Тилли.
         </div>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parkplatz P4 (Bezoldweg)</strong> (????? ? ?????????? ?????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parkplatz P4 (Bezoldweg)</strong> (прямо у крепостных ворот)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 1.5 ????</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 1.5 часа</span>
         </div>
       </div>
 
@@ -391,11 +461,11 @@
             <span class="badge-num">5</span>
             <div>
               <h4 class="text-sm font-black text-white">Schloss Oberhofen & Thunersee</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">?????? A8 ? ??????????? ? 485 ?? ?? ??????</span>
+              <span class="text-[10px] text-slate-400 font-semibold">Трасса A8 у Интерлакена • 485 км от старта</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Schloss+Oberhofen" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -403,24 +473,24 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/oberhofen_castle_lake.jpg" alt="Schloss Oberhofen" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? Oberhofen ????? ? ????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Замок Oberhofen прямо в воде</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/lake_thun.jpg" alt="Lake Thun" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????? ????? Thunersee ? ?????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Лазурное озеро Thunersee и Альпы</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????? XII ????, ??? ??????? ??????? ????????? ????? ?? ?????????? ?????????? ???? ????? Thunersee. ?????? ????? ?????? ??????????? ???????????????? ?????, ???? ? ???????.
+          Замок XII века, чья изящная башенка вырастает прямо из зеркальной ледниковой воды озера Thunersee. Позади озера стеной поднимаются четырехтысячники Эйгер, Мёнх и Юнгфрау.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parkplatz Schloss Oberhofen</strong> (?? ??????????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parkplatz Schloss Oberhofen</strong> (на набережной)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 30 ???</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 30 мин</span>
         </div>
       </div>
 
@@ -431,11 +501,11 @@
             <span class="badge-num">6</span>
             <div>
               <h4 class="text-sm font-black text-white">Lauterbrunnen & Staubbachfall</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ??? 2 ? ?????? 795 ?</span>
+              <span class="text-[10px] text-slate-400 font-semibold">Финиш Дня 2 • Высота 795 м</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Lauterbrunnen" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -443,30 +513,28 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/lauterbrunnen_valley_snow.jpg" alt="Lauterbrunnen Valley" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????? ???? (???????? ??????????)</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Каньон скал (прототип Ривенделла)</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/lauterbrunnen_staubbach.jpg" alt="Staubbachfall waterfall" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">??????? Staubbachfall (297 ?)</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Водопад Staubbachfall (297 м)</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ??? ??????????? ??????? ????? ???? ???????? ???????????? ?????????? ????. ??????? Staubbachfall ?????? ?? 297 ?????? ????? ?? ?????????? ????????. ????? ??????? ???? ????????? ? ????????????? ??????? ??????.
+          Дно ледникового каньона между двух отвесных километровых монолитных стен. Водопад Staubbachfall падает на 297 метров прямо за деревянной церковью. Зимой водяная пыль замерзает в аквамариновые ледяные столбы.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ?????????? ????????</span>
-            <strong>Parkhaus Lauterbrunnen</strong> (?????? ?????????????? ????? ? ???????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ БЕЗОПАСНАЯ ПАРКОВКА</span>
+            <strong>Parkhaus Lauterbrunnen</strong> (крытый многоуровневый гараж у вокзала)
           </div>
         </div>
       </div>
 
-    </div>
-
-    <!-- ========================================== -->
-    <!-- ???? 3: LAUTERBRUNNEN ? CHAMONIX           -->
+    </div>    <!-- ========================================== -->
+    <!-- ДЕНЬ 3: LAUTERBRUNNEN ➔ CHAMONIX           -->
     <!-- ========================================== -->
     <div id="day-3" class="day-content hidden space-y-5">
       
@@ -474,13 +542,55 @@
       <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
         <img src="images/chamonix_montblanc.jpg" alt="Chamonix Mont Blanc" class="w-full h-52 object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">???? 3 ? 244 ?? ? 3.2 ?</span>
+          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">ЭТАП 3 • 244 КМ • 3.2 Ч</span>
           <h2 class="text-xl font-black text-white leading-tight">
-            ?? ?????? ?????? ? ?????? ???????? ????????
+            Из долины эльфов к вечным ледникам Монблана
           </h2>
           <p class="text-xs text-slate-300 mt-1">
-            ????? ???????? ?? ??????????? ????: ????? ? Gruy?res, ????? Chillon ? ???????? Mont Blanc.
+            Самый короткий по километражу день: фондю в Gruyères, замок Chillon и подножие Mont Blanc.
           </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DETOUR CALCULATOR -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <span>⚙️</span> Остановки и отклонения (День 3):
+          </h3>
+          <span id="calcDay3" class="text-xs font-mono font-bold text-emerald-400">244 км • 3 ч 15 мин</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 cursor-pointer">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" checked disabled class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Базовый автобан (A8 ➔ A6 ➔ A12 ➔ A9 ➔ A40)</strong>
+                <span class="text-slate-400 text-[11px]">Lauterbrunnen ➔ Женевское озеро ➔ Chamonix</span>
+              </div>
+            </div>
+            <span class="text-slate-400 font-mono">234 км</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkGruyeres" checked onchange="recalcDay3()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд в Château de Gruyères</strong>
+                <span class="text-slate-400 text-[11px]">Съезд с A12 на 5 минут • сырное фондю и замок</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+10 км / +1.5 ч</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkChillon" checked onchange="recalcDay3()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Остановка у Château de Chillon & Montreux</strong>
+                <span class="text-slate-400 text-[11px]">Замок на воде Lac Léman у обочины трассы</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">0 км / +45 мин</span>
+          </label>
         </div>
       </div>
 
@@ -488,18 +598,18 @@
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
           <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <span>??</span> ??????? ?????
+            <span>📋</span> Паспорт этапа
           </h3>
-          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">?????? ?????? ?? A40</span>
+          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">Легкая дорога по A40</span>
         </div>
         <div class="grid grid-cols-2 gap-2 text-xs">
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">??????</span>
-            <span class="font-bold text-white">A8 ? A6 ? A12 ? A9 ? A40</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Трассы</span>
+            <span class="font-bold text-white">A8 ➔ A6 ➔ A12 ➔ A9 ➔ A40</span>
           </div>
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">?????? ?????</span>
-            <span class="font-bold text-white">CH-???????? + A40 (~6 ?)</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Оплата дорог</span>
+            <span class="font-bold text-white">CH-виньетка + A40 (~6 €)</span>
           </div>
         </div>
       </div>
@@ -507,28 +617,28 @@
       <!-- TIMELINE CARD -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
         <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-          <span>??</span> ????????? ???? ???
+          <span>⏱️</span> Почасовой план дня
         </h3>
         <div class="space-y-2.5 text-xs text-slate-300 relative pl-4 border-l border-slate-800">
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">08:30 ? 10:30</strong> ? ???????? ???????? ? ?????????? ???????? Staubbachfall ? Lauterbrunnen.
+            <strong class="text-white">08:30 – 10:30</strong> — Утренняя прогулка к замерзшему водопаду Staubbachfall в Lauterbrunnen.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">11:45 ? 13:15</strong> ? <strong>Ch?teau de Gruy?res</strong>: ????????????? ????? ?? ?????, ?????? ????? Moiti?-Moiti? ? ????? ???????? H.R. Giger.
+            <strong class="text-amber-300">11:45 – 13:15</strong> — <strong>Château de Gruyères</strong>: средневековый замок на холме, сырное фондю Moitié-Moitié и музей «Чужого» H.R. Giger.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">13:45 ? 14:30</strong> ? <strong>Ch?teau de Chillon & Montreux</strong>: ????? ?? ???? ????? L?man, ???????? ???????, ?????? ? ??????????? ???.
+            <strong class="text-white">13:45 – 14:30</strong> — <strong>Château de Chillon & Montreux</strong>: замок на воде озера Léman, автограф Байрона, пальмы у заснеженных гор.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-slate-600"></div>
-            <strong class="text-white">14:30 ? 15:45</strong> ? ?????????? ?????? ?? ??????? ?? Autoroute Blanche A40.
+            <strong class="text-white">14:30 – 15:45</strong> — Скоростной подъем во Францию по Autoroute Blanche A40.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-emerald-500"></div>
-            <strong class="text-emerald-300">15:45 ? ?????</strong> ? ???????? ? <strong>Chamonix-Mont-Blanc</strong>. ????? <em>Parking Saint-Michel</em>, ???????? ???? Mont Blanc (4 808 ?) ? ????????? Tartiflette.
+            <strong class="text-emerald-300">15:45 – Вечер</strong> — Прибытие в <strong>Chamonix-Mont-Blanc</strong>. Гараж <em>Parking Saint-Michel</em>, панорама пика Mont Blanc (4 808 м) и савойский Tartiflette.
           </div>
         </div>
       </div>
@@ -539,37 +649,37 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">7</span>
             <div>
-              <h4 class="text-sm font-black text-white">Ch?teau de Gruy?res</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? A12 ?? 5 ????? ? 105 ?? ?? ??????</span>
+              <h4 class="text-sm font-black text-white">Château de Gruyères</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с A12 на 5 минут • 105 км от старта</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Ch%C3%A2teau+de+Gruy%C3%A8res" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/gruyeres_castle.jpg" alt="Ch?teau de Gruy?res" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? Gruy?res ?? ?????</span>
+            <img src="images/gruyeres_castle.jpg" alt="Château de Gruyères" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Замок Gruyères на холме</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/fondue_swiss.jpg" alt="Swiss Fondue" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? Moiti?-Moiti?</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Фондю Moitié-Moitié</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ??????????? ????? XIII ???? ?? ??????? ?????. ?????????? ??????? ??????, ???????????? ????????? ? ??????????? ?????/??? ????????? ???????? ????? ?????? ?? ?????????? ???????.
+          Укрепленный замок XIII века на вершине холма. Пешеходная мощеная улочка, традиционные сыроварни и официальный музей/бар создателя «Чужого» Ханса Гигера со скелетными сводами.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parking Ville de Gruy?res (P1 / P2)</strong> (? ???????? ?????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parking Ville de Gruyères (P1 / P2)</strong> (у подножия холма)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 1.5 ????</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 1.5 часа</span>
         </div>
       </div>
 
@@ -579,37 +689,37 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">8</span>
             <div>
-              <h4 class="text-sm font-black text-white">Ch?teau de Chillon & Montreux</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">?????? A9 ? ???? Lac L?man ? 145 ??</span>
+              <h4 class="text-sm font-black text-white">Château de Chillon & Montreux</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Трасса A9 у воды Lac Léman • 145 км</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Chillon+Castle" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/chillon_castle.jpg" alt="Ch?teau de Chillon" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? Chillon ????? ? ???? ?????</span>
+            <img src="images/chillon_castle.jpg" alt="Château de Chillon" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Замок Chillon прямо в воде озера</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/montreux_lake.jpg" alt="Montreux promenade" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????? Montreux ? ??????????? ?????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Пальмы Montreux и заснеженные Альпы</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ???????? ????? ?? ???????? ??????? ? ????? ?????????? ?????. ????? ???? ?????? ??????? ???? ???????? ?? ??????? ??????, ??????? ??????????? ??????. ????? ? Montreux ? ?????????? ? ???????? ? ???????? ?????? ????????.
+          Каменный замок на скальном острове в водах Женевского озера. Здесь лорд Байрон вырезал свой автограф на колонне тюрьмы, написав «Шильонский узник». Рядом в Montreux — набережная с пальмами и памятник Фредди Меркьюри.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Avenue de Chillon</strong> (??????????? ??????? ????? ????? ??????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Avenue de Chillon</strong> (парковочные карманы прямо перед замком)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 45 ???</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 45 мин</span>
         </div>
       </div>
 
@@ -619,12 +729,12 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">9</span>
             <div>
-              <h4 class="text-sm font-black text-white">Chamonix-Mont-Blanc (4 808 ?)</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ??? 3 ? ?????? 1 035 ?</span>
+              <h4 class="text-sm font-black text-white">Chamonix-Mont-Blanc (4 808 м)</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Финиш Дня 3 • Высота 1 035 м</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Chamonix-Mont-Blanc" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -632,30 +742,28 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/chamonix_montblanc.jpg" alt="Mont Blanc" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? Mont Blanc ??? ???????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Купол Mont Blanc над городом</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/aiguille_du_midi.jpg" alt="Aiguille du Midi" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????? ???? Aiguille du Midi (3 842 ?)</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Скальная игла Aiguille du Midi (3 842 м)</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ??????? ??????? ??????????. ????? ??? ??????? ?? 3.8 ?? ????? ???????? ??????? ????? ?????? ??????? ??????. ??????? ? ???????? ?? ????? Rue du Docteur Paccard ? ??????? ????????? Tartiflette.
+          Мировая столица альпинизма. Прямо над крышами на 3.8 км вверх взлетает ледяной купол высшей вершины Европы. Вечером — прогулка по улице Rue du Docteur Paccard и горячий савойский Tartiflette.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ?????????? ?????</span>
-            <strong>Parking Saint-Michel</strong> (????????? ?????????? ????? ? ??????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ БЕЗОПАСНЫЙ ГАРАЖ</span>
+            <strong>Parking Saint-Michel</strong> (подземный охраняемый гараж в центре)
           </div>
         </div>
       </div>
 
-    </div>
-
-    <!-- ========================================== -->
-    <!-- ???? 4: CHAMONIX ? N?MES                   -->
+    </div>    <!-- ========================================== -->
+    <!-- ДЕНЬ 4: CHAMONIX ➔ NÎMES                   -->
     <!-- ========================================== -->
     <div id="day-4" class="day-content hidden space-y-5">
       
@@ -663,13 +771,55 @@
       <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
         <img src="images/pont_du_gard.jpg" alt="Pont du Gard" class="w-full h-52 object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">???? 4 ? 392 ?? ? ~4.6 ?</span>
+          <span class="text-[10px] font-black tracking-widest text-blue-400 uppercase">ЭТАП 4 • 392 КМ • ~4.6 Ч</span>
           <h2 class="text-xl font-black text-white leading-tight">
-            ?? ?????? ???????? ???? ? ??????? ??? ? ???????? ????
+            От вечных ледников Альп к теплому югу и древнему Риму
           </h2>
           <p class="text-xs text-slate-300 mt-1">
-            ??????????? ???????? Annecy, ???????????? ??????? ??????? Pont du Gard ? ????? ? N?mes.
+            «Альпийская Венеция» Annecy, колоссальный римский акведук Pont du Gard и арена в Nîmes.
           </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DETOUR CALCULATOR -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <span>⚙️</span> Остановки и отклонения (День 4):
+          </h3>
+          <span id="calcDay4" class="text-xs font-mono font-bold text-emerald-400">392 км • 4 ч 35 мин</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 cursor-pointer">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" checked disabled class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Базовый автобан (A40 ➔ A41 ➔ A43 ➔ A7 ➔ A9)</strong>
+                <span class="text-slate-400 text-[11px]">Chamonix ➔ Nîmes через долину Роны</span>
+              </div>
+            </div>
+            <span class="text-slate-400 font-mono">378 км</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkAnnecy" checked onchange="recalcDay4()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд в Annecy («Альпийская Венеция»)</strong>
+                <span class="text-slate-400 text-[11px]">Старый город, каналы и озеро</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+8 км / +1.5 ч</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkPontDuGard" checked onchange="recalcDay4()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд к Pont du Gard (Римский акведук)</strong>
+                <span class="text-slate-400 text-[11px]">Съезд с трассы A9 на 15 минут • мост 49 м</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+6 км / +1.5 ч</span>
+          </label>
         </div>
       </div>
 
@@ -677,18 +827,18 @@
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
           <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <span>??</span> ??????? ?????
+            <span>📋</span> Паспорт этапа
           </h3>
-          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">????? ? ?????????????? ??</span>
+          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">Спуск в субтропический юг</span>
         </div>
         <div class="grid grid-cols-2 gap-2 text-xs">
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">??????</span>
-            <span class="font-bold text-white">A40 ? A41 ? A43 ? A7 ? A9</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Трассы</span>
+            <span class="font-bold text-white">A40 ➔ A41 ➔ A43 ➔ A7 ➔ A9</span>
           </div>
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">?????? ?????</span>
-            <span class="font-bold text-white">??????? ???????? FR (~35 ? ??????)</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Оплата дорог</span>
+            <span class="font-bold text-white">Платные автобаны FR (~35 € картой)</span>
           </div>
         </div>
       </div>
@@ -696,28 +846,28 @@
       <!-- TIMELINE CARD -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
         <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-          <span>??</span> ????????? ???? ???
+          <span>⏱️</span> Почасовой план дня
         </h3>
         <div class="space-y-2.5 text-xs text-slate-300 relative pl-4 border-l border-slate-800">
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">08:30</strong> ? ????? ?? Chamonix ???? ?? ?????? ?? ?????? A40.
+            <strong class="text-white">08:30</strong> — Выезд из Chamonix вниз по долине по трассе A40.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">09:45 ? 11:15</strong> ? <strong>Annecy (Palais de l'Isle)</strong>: ???????? ????? ????????? ??????? ??????? ??????, ??? ?? ????? ? ?????? ?????????.
+            <strong class="text-amber-300">09:45 – 11:15</strong> — <strong>Annecy (Palais de l'Isle)</strong>: прогулка вдоль бирюзовых каналов старого города, вид на озеро и свежие круассаны.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-slate-600"></div>
-            <strong class="text-white">11:15 ? 14:30</strong> ? ?????????? ?????? ?? ?? ?? ??????????? ??????? A7 ????? ???? ????.
+            <strong class="text-white">11:15 – 14:30</strong> — Скоростной бросок на юг по «Магистрали Солнца» A7 вдоль реки Рона.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">14:30 ? 16:00</strong> ? <strong>Pont du Gard</strong>: ??????????? 49-???????? ??????? ??????? ??? ????? Gardon, ???? ? ???????? ??????? ??? ??????.
+            <strong class="text-amber-300">14:30 – 16:00</strong> — <strong>Pont du Gard</strong>: грандиозный 49-метровый римский акведук над рекой Gardon, парк с вековыми оливами для собаки.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-emerald-500"></div>
-            <strong class="text-emerald-300">16:30 ? ?????</strong> ? ???????? ? <strong>N?mes</strong>. ??????? ????????? <strong>Ar?nes de N?mes</strong> I ???? ? ???????? ???? Maison Carr?e.
+            <strong class="text-emerald-300">16:30 – Вечер</strong> — Прибытие в <strong>Nîmes</strong>. Римский амфитеатр <strong>Arènes de Nîmes</strong> I века и античный храм Maison Carrée.
           </div>
         </div>
       </div>
@@ -729,11 +879,11 @@
             <span class="badge-num">10</span>
             <div>
               <h4 class="text-sm font-black text-white">Annecy & Palais de l'Isle</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? A41 ? 100 ?? ?? Chamonix</span>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с A41 • 100 км от Chamonix</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Palais+de+l%27%C3%8Ele+Annecy" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -741,24 +891,24 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/annecy_palais.jpg" alt="Palais de l'Isle Annecy" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????-??????? Palais de l'Isle</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Замок-корабль Palais de l'Isle</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/annecy_lake.jpg" alt="Lac d'Annecy" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? Lac d'Annecy ? ????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Озеро Lac d'Annecy и горы</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ??????????? ???????? ? ????????????? ????? ? ???????????? ????????, ??????????? ?? ????? ????. ??????? ???? Thiou ?? ???????? ????? ??????????? ?????-?????? XII ???? ? ????? ???? ????????? ???????.
+          «Альпийская Венеция» — средневековый город с кристальными каналами, вытекающими из озера Анси. Посреди реки Thiou на островке стоит укрепленный замок-тюрьма XII века в форме носа каменного корабля.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parking Sainte-Claire</strong> (????????? ??????? ? ??????? ??????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parking Sainte-Claire</strong> (подземный паркинг у старого города)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 1.5 ????</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 1.5 часа</span>
         </div>
       </div>
 
@@ -768,12 +918,12 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">11</span>
             <div>
-              <h4 class="text-sm font-black text-white">Pont du Gard (??????? ???????)</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? A9 (Remoulins) ? 20 ?? ?? N?mes</span>
+              <h4 class="text-sm font-black text-white">Pont du Gard (Римский акведук)</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с A9 (Remoulins) • 20 км до Nîmes</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Pont+du+Gard" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -781,24 +931,24 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/pont_du_gard.jpg" alt="Pont du Gard" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????????? ??????? ??????? 49 ?</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Трехъярусный акведук высотой 49 м</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/pont_du_gard_close.jpg" alt="Pont du Gard masonry" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????? ?? 6-?????? ???? I ?. ?.?.</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Кладка из 6-тонных глыб I в. н.э.</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????? ??????? ????????? ???????? ??????? ? ???? (?????? 49 ?????? ? ??? 16-??????? ???!). ???????? ????????? ?? 6-?????? ?????? ??? ????? ????????. ?????? ? ???? ? ?????????? ?????? ? ???? Gardon.
+          Самый высокий уцелевший античный акведук в мире (высота 49 метров — как 16-этажный дом!). Построен римлянами из 6-тонных блоков без капли раствора. Вокруг — парк с оливковыми рощами и река Gardon.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parking Pont du Gard</strong> (?????????? ??????? ???????????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parking Pont du Gard</strong> (охраняемый паркинг заповедника)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 1.5 ????</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 1.5 часа</span>
         </div>
       </div>
 
@@ -808,48 +958,46 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">12</span>
             <div>
-              <h4 class="text-sm font-black text-white">Ar?nes de N?mes</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? N?mes ? ????? ??? 4</span>
+              <h4 class="text-sm font-black text-white">Arènes de Nîmes</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Центр Nîmes • Финиш Дня 4</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Ar%C3%A8nes+de+N%C3%AEmes" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
         <!-- 2 PHOTOS GALLERY -->
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
-            <img src="images/nimes_arena.jpg" alt="Ar?nes de N?mes" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">??????? ????????? 70 ?. ?.?.</span>
+            <img src="images/nimes_arena.jpg" alt="Arènes de Nîmes" class="w-full h-32 object-cover">
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Римский амфитеатр 70 г. н.э.</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/nimes_arena.jpg" alt="Nimes arena dusk" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????????? ??????? ??????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Двухъярусные римские аркады</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????? ????????????? ??????? ????????? ?? ??????? (?????????? ???? ????? ???????? ???????!). ?????? 24 000 ????????. ? 5 ??????? ?????? ? ??????? ???? <strong>Maison Carr?e</strong> I ???? ?.?. (?????? 2023).
+          Самый сохранившийся римский амфитеатр на планете (сохранился даже лучше римского Колизея!). Вмещал 24 000 зрителей. В 5 минутах пешком — римский храм <strong>Maison Carrée</strong> I века н.э. (ЮНЕСКО 2023).
         </p>
 
         <div class="bg-slate-950/80 p-3 rounded-xl border border-amber-900/40 text-xs text-slate-300 space-y-1">
-          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">?? ?????? ???????? ????? ????:</strong>
-          ????????? ?????? ??????-??????????? ?????????? ? <strong>Barcelona ZBE</strong> (?? ????? zbe.barcelona), ????? ?????? ???????? ??????? ? ?????????.
+          <strong class="text-amber-400 block text-[11px] uppercase tracking-wider">⚠️ Важная проверка перед сном:</strong>
+          Проверьте статус онлайн-регистрации автомобиля в <strong>Barcelona ZBE</strong> (на сайте zbe.barcelona), чтобы завтра спокойно въехать в Барселону.
         </div>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ??????? ? ????????</span>
-            <strong>Parking Q-Park Ar?nes</strong> (????????? ?????????? ???????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ НОЧЕВКА И ПАРКОВКА</span>
+            <strong>Parking Q-Park Arènes</strong> (подземный охраняемый паркинг)
           </div>
         </div>
       </div>
 
-    </div>
-
-    <!-- ========================================== -->
-    <!-- ???? 5: N?MES ? BARCELONA                  -->
+    </div>    <!-- ========================================== -->
+    <!-- ДЕНЬ 5: NÎMES ➔ BARCELONA                  -->
     <!-- ========================================== -->
     <div id="day-5" class="day-content hidden space-y-5">
       
@@ -857,13 +1005,55 @@
       <div class="relative rounded-2xl overflow-hidden border border-slate-800 shadow-2xl">
         <img src="images/barcelona_view.jpg" alt="Barcelona viewpoint" class="w-full h-52 object-cover">
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent flex flex-col justify-end p-4">
-          <span class="text-[10px] font-black tracking-widest text-emerald-400 uppercase">???? 5 ? 392 ?? ? ~4.2 ? ? ?????! ??</span>
+          <span class="text-[10px] font-black tracking-widest text-emerald-400 uppercase">ЭТАП 5 • 392 КМ • ~4.2 Ч • ФИНИШ! 🎉</span>
           <h2 class="text-xl font-black text-white leading-tight">
-            ????? ??????? ? ???????????? ????: ????? ? ????????? ? ????? ???
+            Через Пиренеи к Средиземному морю: въезд в Каталонию и новый дом
           </h2>
           <p class="text-xs text-slate-300 mt-1">
-            ????????? ???? Salses, ????????????????? ????? ???? ? ???????????? ????? ?? ????? Montju?c!
+            Подземный форт Salses, сюрреалистический замок Дали и триумфальный финиш на холме Montjuïc!
           </p>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE DETOUR CALCULATOR -->
+      <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl space-y-3">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
+            <span>⚙️</span> Остановки и отклонения (День 5):
+          </h3>
+          <span id="calcDay5" class="text-xs font-mono font-bold text-emerald-400">392 км • 4 ч 15 мин</span>
+        </div>
+        <div class="space-y-2 text-xs">
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60 cursor-pointer">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" checked disabled class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Базовый автобан (A9 ➔ AP-7 Каталония)</strong>
+                <span class="text-slate-400 text-[11px]">Nîmes ➔ Barcelona (прямой транзит)</span>
+              </div>
+            </div>
+            <span class="text-slate-400 font-mono">385 км</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkSalses" checked onchange="recalcDay5()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд к Forteresse de Salses</strong>
+                <span class="text-slate-400 text-[11px]">Съезд с A9 ровно на 5 минут • форт XV века</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+2 км / +40 мин</span>
+          </label>
+          <label class="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 hover:bg-slate-800 border border-slate-700/40 cursor-pointer transition">
+            <div class="flex items-center gap-2.5">
+              <input type="checkbox" id="checkDali" checked onchange="recalcDay5()" class="rounded text-blue-600 bg-slate-700 border-slate-600">
+              <div>
+                <strong class="text-white block">Съезд в Teatre-Museu Dalí (Figueres)</strong>
+                <span class="text-slate-400 text-[11px]">Съезд с AP-7 на 10 минут • театр Дали и обед</span>
+              </div>
+            </div>
+            <span class="text-blue-400 font-mono font-bold">+5 км / +1.0 ч</span>
+          </label>
         </div>
       </div>
 
@@ -871,18 +1061,18 @@
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3 shadow-xl">
         <div class="flex items-center justify-between border-b border-slate-800/80 pb-2.5">
           <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-            <span>??</span> ??????? ?????
+            <span>📋</span> Паспорт этапа
           </h3>
-          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">????? ???????? (+15?C)</span>
+          <span class="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800/50">Финал маршрута (+15°C)</span>
         </div>
         <div class="grid grid-cols-2 gap-2 text-xs">
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">??????</span>
-            <span class="font-bold text-white">A9 (FR) ? AP-7 (?????????)</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Трассы</span>
+            <span class="font-bold text-white">A9 (FR) ➔ AP-7 (Каталония)</span>
           </div>
           <div class="bg-slate-950/70 p-2.5 rounded-xl border border-slate-800">
-            <span class="text-[10px] text-slate-400 block uppercase font-bold">?????? ?????</span>
-            <span class="font-bold text-white">A9 (~25 ?) ? AP-7 (?????????!)</span>
+            <span class="text-[10px] text-slate-400 block uppercase font-bold">Оплата дорог</span>
+            <span class="font-bold text-white">A9 (~25 €) • AP-7 (БЕСПЛАТНО!)</span>
           </div>
         </div>
       </div>
@@ -890,28 +1080,28 @@
       <!-- TIMELINE CARD -->
       <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 space-y-3">
         <h3 class="text-xs font-black uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-          <span>??</span> ????????? ???? ???
+          <span>⏱️</span> Почасовой план дня
         </h3>
         <div class="space-y-2.5 text-xs text-slate-300 relative pl-4 border-l border-slate-800">
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-blue-500"></div>
-            <strong class="text-white">08:30</strong> ? ????? ?? N?mes ?? ?? ?? ?????? A9 ????? ????? ???????????? ????.
+            <strong class="text-white">08:30</strong> — Выезд из Nîmes на юг по трассе A9 вдоль лагун Средиземного моря.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">10:15 ? 11:00</strong> ? <strong>Forteresse de Salses</strong>: ????? ? A9 ????? ?? 5 ???, ??????????? ????????????? ???? XV ???? ?? ??????? ???????? 12 ??????.
+            <strong class="text-amber-300">10:15 – 11:00</strong> — <strong>Forteresse de Salses</strong>: съезд с A9 ровно на 5 мин, каталонский полуподземный форт XV века со стенами толщиной 12 метров.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-slate-600"></div>
-            <strong class="text-white">11:30</strong> ? ??????????? ??????? ??????? ? ??????? (Le Perthus). ????? ?? AP-7 (?????????? ?????????? ?????????? ?????????).
+            <strong class="text-white">11:30</strong> — Пересечение границы Франции и Испании (Le Perthus). Выезд на AP-7 (бесплатная скоростная магистраль Каталонии).
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-amber-500"></div>
-            <strong class="text-amber-300">11:45 ? 13:00</strong> ? <strong>Teatre-Museu Dal? (Figueres)</strong>: ????? ? AP-7 ?? 10 ???, ????????????????? ????? ???? ? ??????????? ?????? ?? ??????, ????????? ?????-????.
+            <strong class="text-amber-300">11:45 – 13:00</strong> — <strong>Teatre-Museu Dalí (Figueres)</strong>: съезд с AP-7 на 10 мин, сюрреалистический замок Дали с гигантскими яйцами на башнях, испанский тапас-обед.
           </div>
           <div class="relative">
             <div class="absolute -left-[21px] top-1 w-2 h-2 rounded-full bg-emerald-500"></div>
-            <strong class="text-emerald-300">14:45 ? 16:00</strong> ? ???????? ? <strong>Barcelona!</strong> ?????? ?? <strong>Mirador de Montju?c</strong>: ???????? 360? ?? ????, ????, ??????? ??????? ? ????? ???! ??
+            <strong class="text-emerald-300">14:45 – 16:00</strong> — Прибытие в <strong>Barcelona!</strong> Подъем на <strong>Mirador de Montjuïc</strong>: панорама 360° на море, порт, Саграда Фамилия и новый дом! 🎉
           </div>
         </div>
       </div>
@@ -923,11 +1113,11 @@
             <span class="badge-num">13</span>
             <div>
               <h4 class="text-sm font-black text-white">Forteresse de Salses</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? A9 (Sortie 40) ? 150 ?? ?? N?mes</span>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с A9 (Sortie 40) • 150 км от Nîmes</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Forteresse+de+Salses" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -935,24 +1125,24 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/salses_fort_ext.jpg" alt="Forteresse de Salses exterior" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? ???????? 12 ? ? ???</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Стены толщиной 12 м и ров</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/salses_fort.jpg" alt="Forteresse de Salses court" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">?????????? ???????? ???? ????????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Внутренний каменный двор цитадели</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????????? ??????????? ??????? ???????? XV ????, ??????????? ???????? ??????????? ? ?????????. ????? ???????? ???? ?? ?????, ??? ????????? ????????? ? ?????: ????? ????? ????????? ??????? ?? 12 ??????, ? ?????? ????? ??? ? ?????.
+          Мощнейшая каталонская военная цитадель XV века, построенная королями Фердинандом и Изабеллой. Чтобы защитить форт от пушек, его буквально «утопили» в землю: стены имеют рекордную толщину до 12 метров, а вокруг вырыт ров с водой.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>??????? Forteresse de Salses</strong> (????? ? ???, ?????????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Паркинг Forteresse de Salses</strong> (прямо у рва, бесплатно)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 40 ???</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 40 мин</span>
         </div>
       </div>
 
@@ -962,12 +1152,12 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">14</span>
             <div>
-              <h4 class="text-sm font-black text-white">Teatre-Museu Dal? (Figueres)</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? AP-7 (Figueres) ? 205 ?? ?? N?mes</span>
+              <h4 class="text-sm font-black text-white">Teatre-Museu Dalí (Figueres)</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">Съезд с AP-7 (Figueres) • 205 км от Nîmes</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Teatre-Museu+Dal%C3%AD+Figueres" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -975,24 +1165,24 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/dali_museum_ext.jpg" alt="Dali museum towers" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? ? ??????????? ?????? Torre Galatea</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Башни с гигантскими яйцами Torre Galatea</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/dali_museum.jpg" alt="Dali museum facade" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????? ? ???????????? ?????????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Фасад с каталонскими караваями</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ?????? ?????????? ????. ? ?????? ?????????? ?????? ???????? ???????? ???? ??????? ????????????????? ????? ? ?????? ? ???????? ???????? ?? ??????. ??? ???? ????????? ? ?????? ????? ??? ??????? ?????.
+          Родина Сальвадора Дали. В руинах городского театра художник построил свой главный сюрреалистический замок с яйцами и золотыми статуями на башнях. Сам Дали похоронен в склепе прямо под куполом музея.
         </p>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ????????</span>
-            <strong>Parking Saba Pla?a Catalunya</strong> (????????? ??????? ? 300 ?)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА</span>
+            <strong>Parking Saba Plaça Catalunya</strong> (подземный паркинг в 300 м)
           </div>
-          <span class="text-slate-400 font-mono text-[11px]">?? 1 ???</span>
+          <span class="text-slate-400 font-mono text-[11px]">⏱️ 1 час</span>
         </div>
       </div>
 
@@ -1002,12 +1192,12 @@
           <div class="flex items-center gap-2">
             <span class="badge-num">15</span>
             <div>
-              <h4 class="text-sm font-black text-white">Mirador de Montju?c (Barcelona)</h4>
-              <span class="text-[10px] text-slate-400 font-semibold">????? ? ????????? ? ?????? 173 ?</span>
+              <h4 class="text-sm font-black text-white">Mirador de Montjuïc (Barcelona)</h4>
+              <span class="text-[10px] text-slate-400 font-semibold">ФИНИШ В БАРСЕЛОНЕ • ВЫСОТА 173 М</span>
             </div>
           </div>
           <a href="https://maps.google.com/?q=Mirador+de+l%27Alcalde+Barcelona" target="_blank" class="p-2 rounded-xl bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1">
-            <span>??</span> ?????????
+            <span>📍</span> Навигатор
           </a>
         </div>
 
@@ -1015,34 +1205,32 @@
         <div class="grid grid-cols-2 gap-2">
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/barcelona_view.jpg" alt="Barcelona viewpoint" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">???????? ???????????? ???? ? ??????</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Панорама Средиземного моря и города</span>
           </div>
           <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
             <img src="images/barcelona_montjuic.jpg" alt="Mirador de l'Alcalde" class="w-full h-32 object-cover">
-            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">????????? ???????? Montju?c</span>
+            <span class="text-[10px] text-slate-400 p-1.5 block text-center truncate">Смотровая площадка Montjuïc</span>
           </div>
         </div>
 
         <p class="text-xs text-slate-300 leading-relaxed">
-          ????? ???????????? ????????? ???????? ?????? ??? ?????????? 2 054-????????????? ???????????????! ???????? 360? ?? ??????? ????, ???????? ???????, ????? ??????? ??????? ? ?????? ?????????.
+          Самая триумфальная смотровая площадка Европы для завершения 2 054-километрового автопутешествия! Панорама 360° на морской порт, кварталы Эшампле, собор Саграда Фамилия и теплое побережье.
         </p>
 
         <div class="bg-slate-950/80 p-3 rounded-xl border border-emerald-800/40 text-xs text-slate-300 space-y-1">
-          <strong class="text-emerald-400 block text-[11px] uppercase tracking-wider">?? ????? ?????????? ?????!</strong>
-          ??????? ????????. ??????? ?????????, ?????????? ? ????? ????? ? ?????????!
+          <strong class="text-emerald-400 block text-[11px] uppercase tracking-wider">🎉 ДОБРО ПОЖАЛОВАТЬ ДОМОЙ!</strong>
+          Маршрут завершен. Впереди заселение, распаковка и новая жизнь в Барселоне!
         </div>
 
         <div class="flex items-center justify-between text-xs text-slate-300 bg-slate-950/60 p-2.5 rounded-xl border border-slate-800/60">
           <div>
-            <span class="text-[10px] text-slate-400 block font-bold">??? ???????? ?? ???????</span>
-            <strong>Aparcament del Castell de Montju?c</strong> (??????? ???????? ? ?????)
+            <span class="text-[10px] text-slate-400 block font-bold">🅿️ ПАРКОВКА НА ВЕРШИНЕ</span>
+            <strong>Aparcament del Castell de Montjuïc</strong> (большая парковка у замка)
           </div>
         </div>
       </div>
 
-    </div>
-
-  </main>
+    </div>  </main>
 
   <!-- STICKY BOTTOM ACTION BAR -->
   <footer class="sticky bottom-0 z-50 bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 p-3">
@@ -1050,42 +1238,42 @@
       <a id="footerMapLink" href="https://www.google.com/maps/dir/Berlin,+Germany/Monument+to+the+Battle+of+the+Nations,+Str.+des+18.+Oktober+100,+04299+Leipzig,+Germany/W%C3%BCrzburg,+Germany/" 
          target="_blank" 
          class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 font-black text-xs text-white text-center transition flex items-center justify-center gap-2 shadow-2xl">
-        <span>??</span> <span id="footerBtnText">??????? ??????? ??? 1 ? Google Maps (492 ??)</span>
+        <span>📍</span> <span id="footerBtnText">Открыть маршрут Дня 1 в Google Maps (492 км)</span>
       </a>
     </div>
   </footer>
 
-  <!-- SCRIPT FOR SWITCHING DAYS -->
+  <!-- SCRIPT FOR SWITCHING DAYS & DYNAMIC ROUTE RECALC -->
   <script>
     const dayData = {
       1: {
-        title: "Berlin ? W?rzburg",
-        metrics: "492 ?? ? 5.0 ?",
-        btnText: "??????? ??????? ??? 1 ? Google Maps (492 ??)",
+        title: "Berlin ➔ Würzburg",
+        metrics: "492 км • 5.0 ч",
+        btnText: "Открыть маршрут Дня 1 в Google Maps (492 км)",
         mapUrl: "https://www.google.com/maps/dir/Berlin,+Germany/Monument+to+the+Battle+of+the+Nations,+Str.+des+18.+Oktober+100,+04299+Leipzig,+Germany/W%C3%BCrzburg,+Germany/"
       },
       2: {
-        title: "W?rzburg ? Lauterbrunnen",
-        metrics: "534 ?? ? 5.5 ?",
-        btnText: "??????? ??????? ??? 2 ? Google Maps (534 ??)",
+        title: "Würzburg ➔ Lauterbrunnen",
+        metrics: "534 км • 5.5 ч",
+        btnText: "Открыть маршрут Дня 2 в Google Maps (534 км)",
         mapUrl: "https://www.google.com/maps/dir/W%C3%BCrzburg,+Germany/Rothenburg+ob+der+Tauber,+Germany/Oberhofen+Castle,+Schenkkai+8,+3653+Oberhofen+am+Thunersee,+Switzerland/Lauterbrunnen,+Switzerland/"
       },
       3: {
-        title: "Lauterbrunnen ? Chamonix",
-        metrics: "244 ?? ? 3.2 ?",
-        btnText: "??????? ??????? ??? 3 ? Google Maps (244 ??)",
+        title: "Lauterbrunnen ➔ Chamonix",
+        metrics: "244 км • 3.2 ч",
+        btnText: "Открыть маршрут Дня 3 в Google Maps (244 км)",
         mapUrl: "https://www.google.com/maps/dir/Lauterbrunnen,+Switzerland/Ch%C3%A2teau+de+Gruy%C3%A8res,+Rue+du+Ch%C3%A2teau,+Gruy%C3%A8res,+Switzerland/Chillon+Castle,+Veytaux,+Switzerland/Chamonix-Mont-Blanc,+France/"
       },
       4: {
-        title: "Chamonix ? N?mes",
-        metrics: "392 ?? ? 4.6 ?",
-        btnText: "??????? ??????? ??? 4 ? Google Maps (392 ??)",
+        title: "Chamonix ➔ Nîmes",
+        metrics: "392 км • 4.6 ч",
+        btnText: "Открыть маршрут Дня 4 в Google Maps (392 км)",
         mapUrl: "https://www.google.com/maps/dir/Chamonix-Mont-Blanc,+France/Palais+I'Isle,+Pass.+de+l'%C3%8Ele,+74000+Annecy,+France/Pont+du+Gard,+Vers-Pont-du-Gard,+France/N%C3%AEmes,+France/"
       },
       5: {
-        title: "N?mes ? Barcelona ??",
-        metrics: "392 ?? ? 4.2 ?",
-        btnText: "??????? ???????? ??????? ??? 5 ? Google Maps (392 ??)",
+        title: "Nîmes ➔ Barcelona 🎉",
+        metrics: "392 км • 4.2 ч",
+        btnText: "Открыть финишный маршрут Дня 5 в Google Maps (392 км)",
         mapUrl: "https://www.google.com/maps/dir/N%C3%AEmes,+France/Fort+de+Salses,+66600+Salses-le-Ch%C3%A2teau,+France/Dal%C3%AD+Theatre+and+Museum,+Pla%C3%A7a+Gala+i+Salvador+Dal%C3%AD,+Figueres,+Spain/Mirador+de+Montju%C3%AFc,+Barcelona,+Spain/"
       }
     };
@@ -1109,6 +1297,61 @@
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function recalcDay1() {
+      const leipzig = document.getElementById('checkLeipzig')?.checked;
+      let km = leipzig ? 492 : 485;
+      let mins = leipzig ? 300 : 275;
+      const hrs = Math.floor(mins / 60);
+      const rem = mins % 60;
+      document.getElementById('calcDay1').innerText = `${km} км • ${hrs} ч ${rem ? rem + ' мин' : '00 мин'}`;
+    }
+
+    function recalcDay2() {
+      const roth = document.getElementById('checkRothenburg')?.checked;
+      const ober = document.getElementById('checkOberhofen')?.checked;
+      let km = 518;
+      let mins = 300;
+      if (roth) { km += 10; mins += 25; }
+      if (ober) { km += 6; mins += 15; }
+      const hrs = Math.floor(mins / 60);
+      const rem = mins % 60;
+      document.getElementById('calcDay2').innerText = `${km} км • ${hrs} ч ${rem ? rem + ' мин' : '00 мин'}`;
+    }
+
+    function recalcDay3() {
+      const gruy = document.getElementById('checkGruyeres')?.checked;
+      let km = 234;
+      let mins = 180;
+      if (gruy) { km += 10; mins += 15; }
+      const hrs = Math.floor(mins / 60);
+      const rem = mins % 60;
+      document.getElementById('calcDay3').innerText = `${km} км • ${hrs} ч ${rem ? rem + ' мин' : '00 мин'}`;
+    }
+
+    function recalcDay4() {
+      const ann = document.getElementById('checkAnnecy')?.checked;
+      const pont = document.getElementById('checkPontDuGard')?.checked;
+      let km = 378;
+      let mins = 250;
+      if (ann) { km += 8; mins += 15; }
+      if (pont) { km += 6; mins += 15; }
+      const hrs = Math.floor(mins / 60);
+      const rem = mins % 60;
+      document.getElementById('calcDay4').innerText = `${km} км • ${hrs} ч ${rem ? rem + ' мин' : '00 мин'}`;
+    }
+
+    function recalcDay5() {
+      const sal = document.getElementById('checkSalses')?.checked;
+      const dali = document.getElementById('checkDali')?.checked;
+      let km = 385;
+      let mins = 240;
+      if (sal) { km += 2; mins += 5; }
+      if (dali) { km += 5; mins += 15; }
+      const hrs = Math.floor(mins / 60);
+      const rem = mins % 60;
+      document.getElementById('calcDay5').innerText = `${km} км • ${hrs} ч ${rem ? rem + ' мин' : '00 мин'}`;
     }
   </script>
 </body>
