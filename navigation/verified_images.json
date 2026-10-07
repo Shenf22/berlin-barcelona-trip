@@ -66,5 +66,13 @@
   "Bardenas Reales": {
     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/04/LaPisquerra.jpg/330px-LaPisquerra.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
     "orig": "https://upload.wikimedia.org/wikipedia/commons/0/04/LaPisquerra.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "Staubbach Fall": {
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Lauterbrunnen_Staubbach.jpg/330px-Lauterbrunnen_Staubbach.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "orig": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Lauterbrunnen_Staubbach.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "Ch\u00e2teau de Gruy\u00e8res": {
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1f/12_Chateau_de_Gruy%C3%A8res_Photo_by_Giles_Laurent.jpg/330px-12_Chateau_de_Gruy%C3%A8res_Photo_by_Giles_Laurent.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "orig": "https://upload.wikimedia.org/wikipedia/commons/1/1f/12_Chateau_de_Gruy%C3%A8res_Photo_by_Giles_Laurent.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
   }
 }
