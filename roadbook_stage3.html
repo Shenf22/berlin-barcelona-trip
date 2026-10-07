@@ -2,267 +2,381 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>ROADBOOK: Этап 3 (Лаутербруннен ➔ Шамони)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Этап 3: Lauterbrunnen ➔ Chamonix-Mont-Blanc</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
-    .badge-number {
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-tap-highlight-color: transparent; }
+    .nav-pill.active { background-color: #2563eb; color: #ffffff; }
+    .badge-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      background: #f59e0b;
+      color: #0f172a;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 22px;
-      height: 22px;
-      border-radius: 9999px;
-      background-color: #f59e0b;
-      color: #0f172a;
-      font-weight: 800;
-      font-size: 11px;
+      font-weight: 900;
+      font-size: 12px;
+      flex-shrink: 0;
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 p-4 sm:p-8 flex flex-col items-center min-h-screen">
+<body class="bg-slate-900 text-slate-100 min-h-screen pb-24">
 
-  <!-- Header helper -->
-  <div class="max-w-4xl w-full mb-4 flex justify-between items-center text-xs text-slate-400">
-    <div class="flex items-center gap-2">
-      <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-      <span>Сверстано строго по стилю <strong>Hikeline / Esterbauer</strong> (см. ваши фото)</span>
-    </div>
-    <span class="text-slate-500">Книжный разворот: 2 страницы</span>
-  </div>
-
-  <!-- THE BOOK SPREAD CONTAINER -->
-  <div class="max-w-4xl w-full bg-white text-slate-900 rounded-2xl shadow-2xl border border-slate-300 overflow-hidden flex flex-col md:flex-row">
-    
-    <!-- LEFT PAGE: OVERVIEW, MAP & ELEVATION -->
-    <div class="w-full md:w-1/2 p-6 border-b md:border-b-0 md:border-r border-slate-200 flex flex-col justify-between bg-slate-50/50">
-      
+  <!-- TOP MOBILE APP BAR -->
+  <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 px-4 py-3">
+    <div class="max-w-xl mx-auto flex items-center justify-between">
       <div>
-        <!-- Top Bar (Like Tour 2 / Liepnitzsee) -->
-        <div class="flex items-center justify-between border-b-2 border-blue-600 pb-2 mb-3">
-          <div class="flex items-center gap-2">
-            <span class="bg-blue-600 text-white text-xs font-black uppercase px-2 py-0.5 rounded">Этап 3</span>
-            <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Альпы • Комфорт</span>
-          </div>
-          <span class="text-sm font-extrabold text-slate-800 font-mono">244 км</span>
-        </div>
-
-        <h1 class="text-xl font-black text-slate-900 tracking-tight mb-2">
-          Лаутербруннен ➔ Шамони-Монблан
+        <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-400 block">Путеводитель • День 3</span>
+        <h1 class="text-base font-black text-white tracking-tight flex items-center gap-1.5">
+          Lauterbrunnen ➔ Chamonix
         </h1>
+      </div>
+      <div class="text-right">
+        <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800/60 px-2.5 py-1 rounded-full">
+          244 км • 3.2 ч
+        </span>
+      </div>
+    </div>
 
-        <!-- Lead Photo with Caption -->
-        <div class="rounded-xl overflow-hidden shadow-sm border border-slate-200 mb-3 relative">
-          <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Lauterbrunnen_Staubbach.jpg/800px-Lauterbrunnen_Staubbach.jpg" 
-               alt="Lauterbrunnen Staubbachfall" class="w-full h-44 object-cover">
-          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-2 text-[10px] text-white">
-            Водопад Штауббах (297 м) над деревней Лаутербруннен
-          </div>
-        </div>
+    <!-- QUICK CATEGORY TABS -->
+    <div class="max-w-xl mx-auto mt-2.5 flex gap-1.5 overflow-x-auto no-scrollbar pb-1 text-xs font-semibold">
+      <a href="#overview" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 whitespace-nowrap">Обзор</a>
+      <a href="#lauterbrunnen" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 whitespace-nowrap">1. Lauterbrunnen</a>
+      <a href="#gruyeres" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 whitespace-nowrap">2. Gruyères</a>
+      <a href="#chillon" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 whitespace-nowrap">3. Chillon</a>
+      <a href="#chamonix" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-200 hover:bg-slate-700 whitespace-nowrap">4. Chamonix</a>
+      <a href="#winter" class="px-3 py-1.5 rounded-lg bg-slate-800 text-amber-300 hover:bg-slate-700 whitespace-nowrap">Зимняя дорога</a>
+    </div>
+  </header>
 
-        <!-- Metadata Box (Like Esterbauer Start/Ziel/Hartbelag) -->
-        <div class="bg-white rounded-xl p-3 border border-slate-200 shadow-sm text-xs grid grid-cols-2 gap-2 mb-3">
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase font-bold">Старт ➔ Финиш</span>
-            <span class="font-bold text-slate-800">Лаутербруннен ➔ Шамони</span>
-          </div>
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase font-bold">Чистая езда</span>
-            <span class="font-bold text-slate-800">3 ч 15 мин (без спешки)</span>
-          </div>
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase font-bold">Дорожное покрытие</span>
-            <span class="font-bold text-slate-800">100% скоростной автобан</span>
-          </div>
-          <div>
-            <span class="text-slate-400 block text-[10px] uppercase font-bold">Виньетка / Платные</span>
-            <span class="font-bold text-slate-800">CH E-Vignette + A40 (~6 €)</span>
-          </div>
-        </div>
+  <main class="max-w-xl mx-auto px-4 pt-4 space-y-6">
 
-        <!-- Charakteristik -->
-        <div class="text-xs text-slate-700 leading-relaxed mb-3">
-          <strong class="text-slate-900">Charakteristik:</strong> Утром — дно ледникового каньона с 300-метровым водопадом Толкина. В полдень — замок на воде Женевского озера. К 15:00 — въезд в столицу мирового альпинизма под пик Монблан (4 808 м). Короткий перегон оставляет полдня на прогулки.
-        </div>
-
-        <!-- Mini Inset Map (SVG like Photo 2 & 4) -->
-        <div class="bg-slate-100 rounded-xl p-2 border border-slate-200 mb-2 relative">
-          <div class="text-[10px] font-bold text-slate-500 uppercase mb-1 flex justify-between">
-            <span>Схема проезда (Kartenausschnitt)</span>
-            <span>A8 • A6 • A12 • A9 • A40</span>
+    <!-- 0. OVERVIEW SECTION -->
+    <section id="overview" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-xl space-y-4">
+      
+      <!-- Lead Photo -->
+      <div class="rounded-xl overflow-hidden border border-slate-700 relative">
+        <img src="images/lauterbrunnen_staubbach.jpg" alt="Lauterbrunnen Staubbachfall" class="w-full h-52 object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent flex items-end p-3">
+          <div>
+            <span class="text-[10px] font-bold text-amber-400 uppercase tracking-wider block">Старт дня</span>
+            <p class="text-sm font-extrabold text-white">Staubbachfall (297 м) над деревней Lauterbrunnen</p>
           </div>
-          <svg viewBox="0 0 380 140" class="w-full h-auto">
-            <!-- Road path -->
-            <path d="M 340 40 L 300 45 L 260 30 L 190 55 L 140 85 L 80 95 L 40 120" 
-                  fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-            <!-- Lake Geneva -->
-            <path d="M 190 55 Q 160 85 110 80 Q 150 65 190 55 Z" fill="#93c5fd" opacity="0.6" />
-            <text x="130" y="73" fill="#1e40af" font-size="8" font-style="italic">Женевское оз.</text>
-            
-            <!-- Nodes -->
-            <!-- 1. Lauterbrunnen -->
-            <circle cx="340" cy="40" r="5" fill="#f59e0b" stroke="#fff" stroke-width="1.5" />
-            <text x="310" y="28" fill="#1e293b" font-size="9" font-weight="bold">1. Лаутер</text>
-            <!-- 2. Gruyeres -->
-            <circle cx="230" cy="40" r="4.5" fill="#f59e0b" stroke="#fff" stroke-width="1.5" />
-            <text x="215" y="28" fill="#1e293b" font-size="8">2. Грюйер</text>
-            <!-- 3. Chillon -->
-            <circle cx="185" cy="65" r="4.5" fill="#f59e0b" stroke="#fff" stroke-width="1.5" />
-            <text x="180" y="80" fill="#1e293b" font-size="8">3. Шильон</text>
-            <!-- 4. Montreux -->
-            <circle cx="165" cy="62" r="3" fill="#64748b" />
-            <!-- 5. Chamonix -->
-            <circle cx="40" cy="120" r="6" fill="#ef4444" stroke="#fff" stroke-width="2" />
-            <text x="15" y="135" fill="#b91c1c" font-size="9" font-weight="bold">5. Шамони</text>
-          </svg>
         </div>
       </div>
 
-      <!-- Elevation Profile (Höhenprofil like Photo 3 & 4) -->
-      <div class="bg-white rounded-xl p-2.5 border border-slate-200 mt-2">
-        <div class="flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase mb-1">
-          <span>Профиль высоты (Höhenprofil)</span>
-          <span class="text-blue-600 font-mono">372 м – 1 035 м</span>
+      <!-- Quick Metrics Grid -->
+      <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/50">
+          <span class="text-slate-400 block text-[10px] uppercase font-bold">Маршрут</span>
+          <span class="font-bold text-white text-xs">Lauterbrunnen ➔ Chamonix</span>
         </div>
-        <svg viewBox="0 0 360 45" class="w-full h-9">
-          <!-- Baseline -->
-          <line x1="10" y1="38" x2="350" y2="38" stroke="#cbd5e1" stroke-width="1" />
-          <!-- Elevation line -->
-          <polygon points="10,38 10,20 60,28 150,20 200,35 280,30 350,10 350,38" fill="#e0f2fe" opacity="0.7" />
-          <polyline points="10,20 60,28 150,20 200,35 280,30 350,10" fill="none" stroke="#0284c7" stroke-width="2" />
-          <!-- Markers -->
-          <circle cx="10" cy="20" r="3" fill="#f59e0b" />
-          <text x="12" y="17" fill="#475569" font-size="7">795м</text>
-          <circle cx="200" cy="35" r="3" fill="#0284c7" />
-          <text x="185" y="44" fill="#0284c7" font-size="7">Озеро 372м</text>
-          <circle cx="350" cy="10" r="3" fill="#ef4444" />
-          <text x="315" y="9" fill="#b91c1c" font-size="7" font-weight="bold">Шамони 1035м</text>
+        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/50">
+          <span class="text-slate-400 block text-[10px] uppercase font-bold">Время за рулем</span>
+          <span class="font-bold text-emerald-400 text-xs">3 ч 15 мин (без спешки)</span>
+        </div>
+        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/50">
+          <span class="text-slate-400 block text-[10px] uppercase font-bold">Дороги на знаках</span>
+          <span class="font-bold text-white text-xs">A8 ➔ A6 ➔ A12 ➔ A9 ➔ A40</span>
+        </div>
+        <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-700/50">
+          <span class="text-slate-400 block text-[10px] uppercase font-bold">Оплата дорог</span>
+          <span class="font-bold text-amber-300 text-xs">Виньетка CH + A40 (~6 €)</span>
+        </div>
+      </div>
+
+      <!-- Essence -->
+      <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-700/50 text-xs text-slate-300 leading-relaxed">
+        <strong class="text-white block mb-1">Суть дня:</strong>
+        Самый видовой день поездки. Утром — дно ледникового каньона Lauterbrunnen с 300-метровым водопадом. В полдень — сырный средневековый замок Gruyères и каменный замок Chillon на воде Lac Léman. К 15:00 — прибытие в Chamonix к подножию Mont Blanc (4 808 м).
+      </div>
+
+      <!-- Day Schedule Timeline -->
+      <div class="space-y-2 text-xs border-t border-slate-700/60 pt-3">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">Ориентировочный тайминг дня:</span>
+        <div class="flex items-start gap-2.5 text-slate-300">
+          <span class="font-mono font-bold text-blue-400 w-12 shrink-0">08:30</span>
+          <span>Утренняя прогулка по Lauterbrunnen к Staubbachfall.</span>
+        </div>
+        <div class="flex items-start gap-2.5 text-slate-300">
+          <span class="font-mono font-bold text-blue-400 w-12 shrink-0">10:30</span>
+          <span>Выезд из Lauterbrunnen по трассе A8 вдоль озера Thunersee.</span>
+        </div>
+        <div class="flex items-start gap-2.5 text-slate-300">
+          <span class="font-mono font-bold text-blue-400 w-12 shrink-0">11:45</span>
+          <span>Остановка в замке Gruyères (обед, фондю) или Château de Chillon.</span>
+        </div>
+        <div class="flex items-start gap-2.5 text-slate-300">
+          <span class="font-mono font-bold text-blue-400 w-12 shrink-0">14:45</span>
+          <span>Въезд в Chamonix, охраняемый паркинг Saint-Michel, отель.</span>
+        </div>
+        <div class="flex items-start gap-2.5 text-slate-300">
+          <span class="font-mono font-bold text-blue-400 w-12 shrink-0">15:30</span>
+          <span>3 часа светлого времени на прогулку у подножия Mont Blanc.</span>
+        </div>
+      </div>
+
+      <!-- Elevation Chart SVG -->
+      <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700/50">
+        <div class="flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase mb-2">
+          <span>Перепад высоты по маршруту</span>
+          <span class="text-blue-400 font-mono">372 м ➔ 1 035 м</span>
+        </div>
+        <svg viewBox="0 0 360 55" class="w-full h-11">
+          <line x1="10" y1="46" x2="350" y2="46" stroke="#475569" stroke-width="1" />
+          <polygon points="10,46 10,22 60,32 150,20 200,42 270,36 350,12 350,46" fill="#1e3a8a" opacity="0.4" />
+          <polyline points="10,22 60,32 150,20 200,42 270,36 350,12" fill="none" stroke="#38bdf8" stroke-width="2.5" />
+          <circle cx="10" cy="22" r="3.5" fill="#f59e0b" />
+          <text x="12" y="17" fill="#f8fafc" font-size="8" font-weight="bold">Lauterbrunnen 795 м</text>
+          <circle cx="200" cy="42" r="3.5" fill="#38bdf8" />
+          <text x="180" y="52" fill="#93c5fd" font-size="7">Lac Léman 372 м</text>
+          <circle cx="350" cy="12" r="4" fill="#ef4444" />
+          <text x="290" y="10" fill="#fca5a5" font-size="8" font-weight="bold">Chamonix 1 035 м</text>
         </svg>
       </div>
 
-    </div>
+    </section>
 
-    <!-- RIGHT PAGE: ORTSINFORMATIONEN & CHECKPOINTS (Like Photo 2) -->
-    <div class="w-full md:w-1/2 p-6 flex flex-col justify-between bg-white">
+    <!-- 1. LAUTERBRUNNEN DETAIL SECTION -->
+    <section id="lauterbrunnen" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-xl space-y-3">
       
-      <div>
-        <div class="border-b border-slate-200 pb-2 mb-4 flex items-center justify-between">
-          <h2 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
-            <span>📍</span> Точки этапа и информация (Ortsinformationen)
-          </h2>
-          <span class="text-[10px] text-slate-500 font-mono">5 чекпоинтов</span>
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="badge-num">1</span>
+          <h2 class="text-base font-black text-white">Lauterbrunnen & Staubbachfall</h2>
         </div>
+        <span class="text-[10px] font-bold text-amber-400 bg-amber-950/80 border border-amber-800/60 px-2 py-0.5 rounded">
+          Старт • 0 км
+        </span>
+      </div>
 
-        <div class="space-y-4 text-xs">
-          
-          <!-- Point 1 -->
-          <div class="flex gap-2.5 items-start">
-            <span class="badge-number shrink-0 mt-0.5">1</span>
-            <div>
-              <div class="flex items-center justify-between">
-                <h3 class="font-extrabold text-slate-900 text-sm">Водопад Штауббах (Лаутербруннен)</h3>
-                <span class="text-[10px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded">Старт • 0 км</span>
-              </div>
-              <p class="text-slate-600 mt-0.5 leading-snug">
-                Вертикальный столб воды 297 м над старой церковью. Прообраз Ривенделла Толкина (1911) и вдохновение Гёте (1779).
-              </p>
-              <div class="mt-1 text-[11px] text-slate-500 flex items-center gap-2">
-                <span>🅿️ Parkhaus Lauterbrunnen (крытый)</span>
-                <span>⏱️ 1 час</span>
-              </div>
-            </div>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Глубокий каньон с вертикальными километровыми скальными монолитами по обе стороны. Водопад Staubbachfall падает на 297 метров с отвесного уступа прямо за деревянной деревенской церковью.
+      </p>
+
+      <!-- History Card -->
+      <div class="bg-slate-900/80 p-3 rounded-xl border-l-4 border-amber-500 text-xs space-y-1">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 block">История и факты:</span>
+        <p class="text-slate-300 leading-relaxed">
+          В 1911 году 19-летний Джон Толкин путешествовал по Швейцарии с рюкзаком. Позже он признал, что вид долины Lauterbrunnen с падающими со скал водопадами стал прямым визуальным прототипом <strong>Ривенделла (Rivendell)</strong> — убежища эльфов во «Властелине Колец». В 1779 году Гёте, стоя под этим водопадом, написал поэму «Песнь духов над водами».
+        </p>
+      </div>
+
+      <!-- Parking & Practical -->
+      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-700 space-y-2 text-xs">
+        <div class="flex items-start gap-2">
+          <span class="text-blue-400 font-bold shrink-0">🅿️ Парковка:</span>
+          <div>
+            <strong class="text-white block">Parkhaus Lauterbrunnen</strong>
+            <span class="text-slate-400 text-[11px] block">Крытый многоуровневый паркинг у вокзала при въезде в деревню. Самое безопасное место для машины с вещами.</span>
+            <span class="text-slate-400 text-[11px] block">Альтернатива для фото: <em>Parkplatz Kirche</em> прямо под водопадом.</span>
           </div>
-
-          <!-- Point 2 -->
-          <div class="flex gap-2.5 items-start">
-            <span class="badge-number shrink-0 mt-0.5">2</span>
-            <div>
-              <div class="flex items-center justify-between">
-                <h3 class="font-extrabold text-slate-900 text-sm">Замок и городок Грюйер</h3>
-                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">На трассе • 105 км</span>
-              </div>
-              <p class="text-slate-600 mt-0.5 leading-snug">
-                Сказочный укрепленный замок XIII века на вершине холма. Родина сыра Грюйер, традиционное фондю. Музей и бар Х.Р. Гигера (создателя «Чужого»).
-              </p>
-              <div class="mt-1 text-[11px] text-slate-500 flex items-center gap-2">
-                <span>🅿️ Parking Ville de Gruyères (P1)</span>
-                <span>⏱️ 1.5 часа (обед)</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Point 3 -->
-          <div class="flex gap-2.5 items-start">
-            <span class="badge-number shrink-0 mt-0.5">3</span>
-            <div>
-              <div class="flex items-center justify-between">
-                <h3 class="font-extrabold text-slate-900 text-sm">Шильонский замок на воде</h3>
-                <span class="text-[10px] font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded">Основной • 145 км</span>
-              </div>
-              <p class="text-slate-600 mt-0.5 leading-snug">
-                Каменная крепость на отдельной скале в водах Женевского озера. Казематы Байрона с его автографом на колонне (1816).
-              </p>
-              <div class="mt-1 text-[11px] text-slate-500 flex items-center gap-2">
-                <span>🅿️ Карманы Avenue de Chillon у воды</span>
-                <span>⏱️ 40 мин</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Point 4 -->
-          <div class="flex gap-2.5 items-start opacity-80">
-            <span class="badge-number shrink-0 mt-0.5 bg-slate-300 text-slate-700">4</span>
-            <div>
-              <div class="flex items-center justify-between">
-                <h3 class="font-bold text-slate-800">Набережная Монтрё (Крюк +15 мин)</h3>
-                <span class="text-[10px] text-slate-500">По желанию</span>
-              </div>
-              <p class="text-slate-600 mt-0.5 leading-snug">
-                Пальмы среди заснеженных Альп, памятник Фредди Меркьюри у воды.
-              </p>
-            </div>
-          </div>
-
-          <!-- Point 5 -->
-          <div class="flex gap-2.5 items-start">
-            <span class="badge-number shrink-0 mt-0.5 bg-red-600 text-white">5</span>
-            <div>
-              <div class="flex items-center justify-between">
-                <h3 class="font-extrabold text-slate-900 text-sm">Шамони-Монблан (Финиш)</h3>
-                <span class="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">Финиш • 244 км</span>
-              </div>
-              <p class="text-slate-600 mt-0.5 leading-snug">
-                Высшая точка Европы (4 808 м). Колыбель мирового альпинизма (1786) и I Зимних Олимпийских игр (1924). Огни вечернего курорта.
-              </p>
-              <div class="mt-1 text-[11px] text-slate-500 flex items-center gap-2">
-                <span>🅿️ Parking Saint-Michel (охраняемый подземный)</span>
-              </div>
-            </div>
-          </div>
-
+        </div>
+        <div class="flex items-center gap-2 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+          <span>⏱️ <strong>Время:</strong> 1 – 1.5 часа</span>
+          <span>•</span>
+          <span>🚶 <strong>Выгул собаки:</strong> отличная тропа вдоль ручья прямо к водопаду</span>
         </div>
       </div>
 
-      <!-- Winter Tip Footer Box (Like Esterbauer Info-Tipp) -->
-      <div class="mt-4 p-3 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[11px] leading-relaxed">
-        <strong class="font-bold flex items-center gap-1 text-amber-950">
-          <span>❄️</span> Winter-Tipp (Зимний совет):
-        </strong>
-        Едем по надежной 4-полосной <em>Autoroute Blanche</em> (A40 через Женеву). Дорога широкая, полотно греется и чистится безостановочно. Перевал Col de la Forclaz срезает 70 км, но зимой это крутой серпантин — туда сворачиваем только при идеальном чистом небе.
+      <!-- Action Button -->
+      <a href="https://www.google.com/maps/place/Staubbachfall" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-slate-700 hover:bg-slate-600 font-bold text-xs text-white text-center transition flex items-center justify-center gap-1.5">
+        <span>📍</span> Точка Staubbachfall в Google Maps
+      </a>
+
+    </section>
+
+    <!-- 2. GRUYERES DETAIL SECTION -->
+    <section id="gruyeres" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-xl space-y-3">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="badge-num">2</span>
+          <h2 class="text-base font-black text-white">Château de Gruyères</h2>
+        </div>
+        <span class="text-[10px] font-bold text-blue-400 bg-blue-950/80 border border-blue-800/60 px-2 py-0.5 rounded">
+          Съезд с A12 на 5 мин • 105 км
+        </span>
       </div>
 
+      <!-- Photo -->
+      <div class="rounded-xl overflow-hidden border border-slate-700">
+        <img src="images/gruyeres_castle.jpg" alt="Château de Gruyères" class="w-full h-44 object-cover">
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Средневековый укрепленный замок XIII века, венчающий вершину отдельного холма среди альпийских холмов. Полностью пешеходная мощеная улочка внутри крепостных стен, вывески ремесленников, традиционные таверны.
+      </p>
+
+      <!-- History Card -->
+      <div class="bg-slate-900/80 p-3 rounded-xl border-l-4 border-blue-500 text-xs space-y-1">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-blue-400 block">История и факты:</span>
+        <p class="text-slate-300 leading-relaxed">
+          Замок стоял на стратегическом перекрестке с 1270 года. Городок дал имя знаменитому твердому швейцарскому сыру Грюйер. Неожиданный контраст: прямо в старинном замковом городке открыт официальный музей и бар <strong>Х. Р. Гигера (H.R. Giger)</strong> — швейцарского сюрреалиста, придумавшего монстра «Чужого» для фильма Ридли Скотта (бар оформлен в виде биомеханического скелета).
+        </p>
+      </div>
+
+      <!-- Parking & Practical -->
+      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-700 space-y-2 text-xs">
+        <div class="flex items-start gap-2">
+          <span class="text-blue-400 font-bold shrink-0">🅿️ Парковка:</span>
+          <div>
+            <strong class="text-white block">Parking Ville de Gruyères (P1 / P2)</strong>
+            <span class="text-slate-400 text-[11px] block">Большие размеченные парковки прямо у подножия холма. На сам холм въезд машинам закрыт, пешком 5 минут в горку.</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+          <span>⏱️ <strong>Время:</strong> 1 – 1.5 часа (прогулка + горячее фондю на обед)</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <a href="https://www.google.com/maps/place/Château+de+Gruyères" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-slate-700 hover:bg-slate-600 font-bold text-xs text-white text-center transition flex items-center justify-center gap-1.5">
+        <span>📍</span> Точка Château de Gruyères в Google Maps
+      </a>
+
+    </section>
+
+    <!-- 3. CHILLON & MONTREUX DETAIL SECTION -->
+    <section id="chillon" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-xl space-y-3">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="badge-num">3</span>
+          <h2 class="text-base font-black text-white">Château de Chillon & Montreux</h2>
+        </div>
+        <span class="text-[10px] font-bold text-blue-400 bg-blue-950/80 border border-blue-800/60 px-2 py-0.5 rounded">
+          Трасса A9 у воды • 145 км
+        </span>
+      </div>
+
+      <!-- Photo -->
+      <div class="rounded-xl overflow-hidden border border-slate-700">
+        <img src="images/chillon_castle.jpg" alt="Château de Chillon" class="w-full h-44 object-cover">
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Каменный замок на скальном острове прямо в бирюзовой глади Женевского озера (Lac Léman). Позади замка стеной поднимаются заснеженные хребты Dents du Midi. Трасса A9 спускается прямо к набережной.
+      </p>
+
+      <!-- History Card -->
+      <div class="bg-slate-900/80 p-3 rounded-xl border-l-4 border-cyan-500 text-xs space-y-1">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-cyan-400 block">История и факты:</span>
+        <p class="text-slate-300 leading-relaxed">
+          Замок герцогов Савойских контролировал проход к перевалу Сен-Бернар. В подземелье 4 года сидел на цепи Франсуа Бонивар. В 1816 году сюда приехал лорд Байрон, вырезал свое имя на каменной колонне каземата (автограф показывают до сих пор) и написал всемирно известную поэму «Шильонский узник».
+        </p>
+      </div>
+
+      <!-- Parking & Practical -->
+      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-700 space-y-2 text-xs">
+        <div class="flex items-start gap-2">
+          <span class="text-blue-400 font-bold shrink-0">🅿️ Парковка:</span>
+          <div>
+            <strong class="text-white block">Парковочные карманы Avenue de Chillon</strong>
+            <span class="text-slate-400 text-[11px] block">Расположены прямо вдоль набережной перед замком. Оплата по паркомату или синему парковочному диску.</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+          <span>⏱️ <strong>Время:</strong> 40 мин (обойти по набережной, фото замка над водой)</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <a href="https://www.google.com/maps/place/Chillon+Castle" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-slate-700 hover:bg-slate-600 font-bold text-xs text-white text-center transition flex items-center justify-center gap-1.5">
+        <span>📍</span> Точка Château de Chillon в Google Maps
+      </a>
+
+    </section>
+
+    <!-- 4. CHAMONIX-MONT-BLANC DETAIL SECTION -->
+    <section id="chamonix" class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-4 shadow-xl space-y-3">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="badge-num bg-red-600 text-white">4</span>
+          <h2 class="text-base font-black text-white">Chamonix-Mont-Blanc</h2>
+        </div>
+        <span class="text-[10px] font-bold text-red-400 bg-red-950/80 border border-red-800/60 px-2 py-0.5 rounded">
+          Финиш этапа • 244 км
+        </span>
+      </div>
+
+      <!-- Photo -->
+      <div class="rounded-xl overflow-hidden border border-slate-700">
+        <img src="images/chamonix_montblanc.jpg" alt="Mont Blanc" class="w-full h-48 object-cover">
+      </div>
+
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Мировая столица альпинизма на высоте 1 035 м. Прямо над крышами города на 3.8 километра в небо взлетает ледяной купол <strong>Mont Blanc (4 808 м)</strong> — высшей точки Европы. Рядом с городом гигантским ледяным языком спускается ледник Glacier des Bossons.
+      </p>
+
+      <!-- History Card -->
+      <div class="bg-slate-900/80 p-3 rounded-xl border-l-4 border-red-500 text-xs space-y-1">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-red-400 block">История и факты:</span>
+        <p class="text-slate-300 leading-relaxed">
+          В 1786 году местный искатель кристаллов Жак Бальма и доктор Мишель Паккар впервые в истории поднялись на вершину Mont Blanc, положив начало эпохе альпинизма. В 1924 году в Chamonix состоялись самые первые в истории Зимние Олимпийские игры.
+        </p>
+      </div>
+
+      <!-- Parking & Safety for luggage -->
+      <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-700 space-y-2 text-xs">
+        <div class="flex items-start gap-2">
+          <span class="text-emerald-400 font-bold shrink-0">🅿️ Парковка:</span>
+          <div>
+            <strong class="text-white block">Parking Saint-Michel (охраняемый подземный)</strong>
+            <span class="text-slate-400 text-[11px] block">Крытый подземный охраняемый паркинг в самом центре Chamonix. Идеально для машины с переезжающими вещами.</span>
+            <span class="text-slate-400 text-[11px] block">Открытая альтернатива: <em>Parking du Grépon</em>.</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 pt-1 border-t border-slate-800 text-[11px] text-slate-400">
+          <span>🍽️ <strong>Вечер:</strong> горячий тартифлет (Tartiflette) и фондю в деревянном шале</span>
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <a href="https://www.google.com/maps/place/Chamonix-Mont-Blanc" target="_blank" class="w-full py-2.5 px-3 rounded-xl bg-red-600 hover:bg-red-500 font-bold text-xs text-white text-center transition flex items-center justify-center gap-1.5 shadow-lg">
+        <span>📍</span> Точка Chamonix в Google Maps
+      </a>
+
+    </section>
+
+    <!-- 5. WINTER ROAD LOGISTICS SECTION -->
+    <section id="winter" class="bg-amber-950/40 border border-amber-800/60 rounded-2xl p-4 shadow-xl space-y-3">
+      
+      <div class="flex items-center gap-2">
+        <span class="text-base">❄️</span>
+        <h2 class="text-base font-black text-amber-300">Зимняя дорога в Chamonix</h2>
+      </div>
+
+      <div class="space-y-2.5 text-xs text-amber-100/90 leading-relaxed">
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-amber-800/40">
+          <strong class="text-amber-300 block mb-1">1. Гарантированный автобан (Рекомендуемый выбор):</strong>
+          Маршрут через Женеву по французской трассе <strong>A40 (Autoroute Blanche)</strong>. Четыре полосы, пологий подъем по широкому ущелью, постоянная работа снегоуборочной техники, подогрев опасных стыков мостов. Никаких крутых серпантинов. Проезжается легко на вашей демисезонной резине (3PMSF).
+        </div>
+
+        <div class="bg-slate-900/80 p-3 rounded-xl border border-amber-800/40">
+          <strong class="text-slate-400 block mb-1">2. Горный перевал Col de la Forclaz (1 527 м):</strong>
+          Срезает 70 км через Martigny напрямую в долину Chamonix. Крутой альпийский серпантин. Сворачивать туда имеет смысл <em>только при абсолютно ясном голубом небе и чистом прогнозе</em>. Если идет снег — только A40.
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- STICKY BOTTOM BAR -->
+  <div class="fixed bottom-0 inset-x-0 z-50 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800 p-3">
+    <div class="max-w-xl mx-auto flex gap-2">
+      <a href="https://www.google.com/maps/dir/Lauterbrunnen,+Switzerland/Ch%C3%A2teau+de+Gruy%C3%A8res,+Rue+du+Ch%C3%A2teau,+Gruy%C3%A8res,+Switzerland/Chillon+Castle,+Veytaux,+Switzerland/Chamonix-Mont-Blanc,+France/" 
+         target="_blank" 
+         class="w-full py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 font-black text-xs text-white text-center transition flex items-center justify-center gap-2 shadow-xl">
+        <span>📍</span> Открыть весь день в Google Maps (Lauterbrunnen ➔ Chamonix)
+      </a>
     </div>
-
-  </div>
-
-  <!-- Bottom Nav Link -->
-  <div class="max-w-4xl w-full mt-4 text-center">
-    <a href="https://www.google.com/maps/dir/Lauterbrunnen,+Switzerland/Ch%C3%A2teau+de+Gruy%C3%A8res,+Rue+du+Ch%C3%A2teau,+Gruy%C3%A8res,+Switzerland/Chillon+Castle,+Veytaux,+Switzerland/Chamonix-Mont-Blanc,+France/" 
-       target="_blank" 
-       class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs py-2 px-4 rounded-xl shadow-lg transition">
-      <span>📍</span> Открыть этот этап в Google Maps (с заездом в Грюйер и Шильон)
-    </a>
   </div>
 
 </body>
