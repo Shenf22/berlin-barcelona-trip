@@ -1,0 +1,395 @@
+import json
+
+with open('navigation/poi_images.json', 'r', encoding='utf-8') as f:
+    images = json.load(f)
+
+kml_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Берлин ➔ Барселона (5 дней): Основной маршрут + Точки интереса</name>
+    <description>Генеральный маршрут переезда: 5 ночевок + 16 топовых точек интереса с фото, фактами и парковками.</description>
+    
+    <!-- Стили маркеров -->
+    <Style id="stageStop">
+      <IconStyle>
+        <scale>1.3</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/blue-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="finishStop">
+      <IconStyle>
+        <scale>1.5</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="poiDay1">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/orange-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="poiDay2">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/yellow-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="poiDay3">
+      <IconStyle>
+        <scale>1.2</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="poiDay4">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/purple-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="poiDay5">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon><href>http://maps.google.com/mapfiles/ms/icons/ltblue-dot.png</href></Icon>
+      </IconStyle>
+    </Style>
+    <Style id="routeLine">
+      <LineStyle>
+        <color>ffd14836</color>
+        <width>5</width>
+      </LineStyle>
+    </Style>
+
+    <!-- ============================================== -->
+    <!-- СЛОЙ 1: ОСНОВНЫЕ НОЧЕВКИ И МАРШРУТ (СИНИЙ СЛОЙ) -->
+    <!-- ============================================== -->
+    <Folder>
+      <name>🔵 Основной скелет: Ночевки по дням (1 - 5)</name>
+      
+      <Placemark>
+        <name>День 0: Berlin (Старт)</name>
+        <description><![CDATA[
+          <h3>Berlin (Германия)</h3>
+          <p>Точка старта большого переезда на юг.</p>
+        ]]></description>
+        <styleUrl>#stageStop</styleUrl>
+        <Point><coordinates>13.404954,52.520008,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Ночевка 1: Würzburg</name>
+        <description><![CDATA[
+          <h3>Ночевка 1: Würzburg (Германия)</h3>
+          <p><b>Перегон:</b> 492 км (~5.0 ч).<br>
+          Столица Франконии на реке Майн, окруженная холмами и виноградниками.</p>
+        ]]></description>
+        <styleUrl>#stageStop</styleUrl>
+        <Point><coordinates>9.953355,49.791304,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Ночевка 2: Lauterbrunnen</name>
+        <description><![CDATA[
+          <h3>Ночевка 2: Lauterbrunnen (Швейцария)</h3>
+          <p><b>Перегон:</b> 534 км (~5.5 ч).<br>
+          Сказочный ледниковый каньон с вертикальными километровыми стенами и 72 водопадами.</p>
+        ]]></description>
+        <styleUrl>#stageStop</styleUrl>
+        <Point><coordinates>7.907700,46.593500,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Ночевка 3: Chamonix-Mont-Blanc</name>
+        <description><![CDATA[
+          <h3>Ночевка 3: Chamonix-Mont-Blanc (Франция)</h3>
+          <p><b>Перегон:</b> 244 км (~3.2 ч).<br>
+          Столица мирового альпинизма прямо у подножия высочайшей вершины Европы — Mont Blanc (4 808 м).</p>
+        ]]></description>
+        <styleUrl>#stageStop</styleUrl>
+        <Point><coordinates>6.869400,45.923700,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Ночевка 4: Nîmes</name>
+        <description><![CDATA[
+          <h3>Ночевка 4: Nîmes (Юг Франции)</h3>
+          <p><b>Перегон:</b> 392 км (~4.6 ч).<br>
+          Теплый юг Франции, древнеримский город с великолепной античной ареной.</p>
+        ]]></description>
+        <styleUrl>#stageStop</styleUrl>
+        <Point><coordinates>4.360054,43.836699,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>Финиш 5: Barcelona 🎉</name>
+        <description><![CDATA[
+          <h3>Barcelona (Испания) — Финиш! 🎉</h3>
+          <p><b>Перегон:</b> 392 км (~4.2 ч).<br>
+          Приезд в новый дом к полудню!</p>
+        ]]></description>
+        <styleUrl>#finishStop</styleUrl>
+        <Point><coordinates>2.173403,41.385064,0</coordinates></Point>
+      </Placemark>
+
+      <!-- Нить генерального маршрута -->
+      <Placemark>
+        <name>Линия основного маршрута (5 дней • 2 054 км)</name>
+        <styleUrl>#routeLine</styleUrl>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            13.404954,52.520008,0
+            9.953355,49.791304,0
+            7.907700,46.593500,0
+            6.869400,45.923700,0
+            4.360054,43.836699,0
+            2.173403,41.385064,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+
+    <!-- ============================================== -->
+    <!-- СЛОЙ 2: ТОЧКИ ИНТЕРЕСА (ДЕНЬ 1 - ДЕНЬ 5)       -->
+    <!-- ============================================== -->
+    <Folder>
+      <name>⭐ Точки интереса: День 1 (Berlin ➔ Würzburg)</name>
+      
+      <Placemark>
+        <name>1. Völkerschlachtdenkmal (Leipzig)</name>
+        <description><![CDATA[
+          <h3>Памятник Битве народов (Leipzig)</h3>
+          <p><b>Где:</b> Прямо у съезда с автобана A9.<br>
+          <b>Что это:</b> Колоссальный 91-метровый гранитный храм-монумент — самый массивный памятник в Европе. Вес более 300 000 тонн.</p>
+          <img src="{images['Voelkerschlachtdenkmal']}" width="300" /><br>
+          <p><b>История:</b> Построен на месте крупнейшего сражения наполеоновских войн (1813 г.), где коалиция разбила армию Наполеона. Внутри гигантский купол с 324 всадниками в натуральную величину.</p>
+          <p><b>🅿️ Парковка:</b> Parkplatz Völkerschlachtdenkmal (прямо у монумента). <b>Время:</b> 30-40 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay1</styleUrl>
+        <Point><coordinates>12.413333,51.312222,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>2. Würzburger Residenz</name>
+        <description><![CDATA[
+          <h3>Вюрцбургская резиденция (ЮНЕСКО)</h3>
+          <p><b>Где:</b> В центре Würzburg.<br>
+          <b>Что это:</b> Дворец князей-епископов XVIII века — признанный шедевр южногерманского барокко.</p>
+          <img src="{images['Wuerzburg_Residence']}" width="300" /><br>
+          <p><b>История:</b> Над парадной лестницей раскинулся самый большой в мире цельный потолочный плафон (600 кв. м), расписанный венецианским мастером Джованни Тьеполо в 1753 году.</p>
+          <p><b>🅿️ Парковка:</b> Огромная площадь Residenzplatz прямо перед дворцом. <b>Время:</b> 45 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay1</styleUrl>
+        <Point><coordinates>9.938889,49.792778,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>3. Alte Mainbrücke (Würzburg)</name>
+        <description><![CDATA[
+          <h3>Старый мост через реку Майн</h3>
+          <p><b>Где:</b> Исторический центр Würzburg.<br>
+          <b>Что это:</b> Древний каменный арочный мост XV века со статуями королей и святых.</p>
+          <p><b>Вайб:</b> Главная традиция города — вечерняя прогулка по мосту (Brückenschoppen) с потрясающим видом на крепость Marienberg на высоком противоположном берегу.</p>
+          <p><b>Время:</b> 30 мин (вечерняя прогулка).</p>
+        ]]></description>
+        <styleUrl>#poiDay1</styleUrl>
+        <Point><coordinates>9.926111,49.793056,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>⭐ Точки интереса: День 2 (Würzburg ➔ Lauterbrunnen)</name>
+      
+      <Placemark>
+        <name>4. Rothenburg ob der Tauber</name>
+        <description><![CDATA[
+          <h3>Город-крепость Rothenburg ob der Tauber</h3>
+          <p><b>Где:</b> Съезд с трассы A7 ровно на 10 минут.<br>
+          <b>Что это:</b> Самый аутентичный средневековый город Германии. Не тронут войной, полностью сохранен в границах каменных крепостных стен XIV века с башнями и рвом.</p>
+          <img src="{images['Rothenburg']}" width="300" /><br>
+          <p><b>История:</b> В Тридцатилетнюю войну (1631 г.) город был спасен бургомистром, который по пари выпил залпом 3.25 литра вина за один глоток («Der Meistertrunk»).</p>
+          <p><b>🅿️ Парковка:</b> Parkplatz P4 или P5 прямо у крепостных ворот. <b>Время:</b> 1 – 1.5 часа.</p>
+        ]]></description>
+        <styleUrl>#poiDay2</styleUrl>
+        <Point><coordinates>10.180278,49.377500,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>5. Schloss Oberhofen (Thunersee)</name>
+        <description><![CDATA[
+          <h3>Замок Оберхофен на озере Тун</h3>
+          <p><b>Где:</b> Берег озера Thunersee на подъезде к горам.<br>
+          <b>Что это:</b> Романтический замок XII века с изящной каменной башенкой, уходящей прямо в зеркальную гладь бирюзового горного озера.</p>
+          <img src="{images['Schloss_Oberhofen']}" width="300" /><br>
+          <p><b>Вид:</b> Позади замка взлетают снежные громады Bernese Alps (Eiger, Mönch, Jungfrau). Потрясающий контраст воды и скал.</p>
+          <p><b>🅿️ Парковка:</b> Parkplatz Schloss Oberhofen. <b>Время:</b> 30 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay2</styleUrl>
+        <Point><coordinates>7.669167,46.730000,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>6. Staubbachfall (Lauterbrunnen)</name>
+        <description><![CDATA[
+          <h3>Водопад Штауббах (297 м)</h3>
+          <p><b>Где:</b> Финишная точка Дня 2 (Lauterbrunnen).<br>
+          <b>Что это:</b> 300-метровый вертикальный столб воды, срывающийся со скалы над старой церковью. Прообраз Ривенделла Толкина (1911 г.).</p>
+          <img src="{images['Lauterbrunnen']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Parkhaus Lauterbrunnen (крытый охраняемый паркинг у вокзала).</p>
+        ]]></description>
+        <styleUrl>#poiDay2</styleUrl>
+        <Point><coordinates>7.907700,46.593500,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>⭐ Точки интереса: День 3 (Lauterbrunnen ➔ Chamonix)</name>
+      
+      <Placemark>
+        <name>7. Château de Gruyères</name>
+        <description><![CDATA[
+          <h3>Замок и городок Gruyères</h3>
+          <p><b>Где:</b> Съезд с трассы A12 на 5 минут (Bulle).<br>
+          <b>Что это:</b> Укрепленный замок XIII века на вершине холма. Родина сыра Грюйер, традиционное фондю Moitié-Moitié, музей и бар H.R. Giger (создателя «Чужого»).</p>
+          <img src="{images['Gruyeres']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Parking Ville de Gruyères (P1). <b>Время:</b> 1.5 часа (прогулка + обед).</p>
+        ]]></description>
+        <styleUrl>#poiDay3</styleUrl>
+        <Point><coordinates>7.082500,46.584167,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>8. Château de Chillon</name>
+        <description><![CDATA[
+          <h3>Шильонский замок на воде (Lac Léman)</h3>
+          <p><b>Где:</b> Прямо на трассе A9 у кромки Женевского озера.<br>
+          <b>Что это:</b> Каменная крепость на скальном острове в воде. Казематы Байрона с его автографом на колонне (1816 г.).</p>
+          <img src="{images['Chillon']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Avenue de Chillon у замка. <b>Время:</b> 40 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay3</styleUrl>
+        <Point><coordinates>6.927500,46.414167,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>9. Набережная Montreux</name>
+        <description><![CDATA[
+          <h3>Пальмовая набережная Montreux</h3>
+          <p><b>Где:</b> В 3 км от замка Chillon.<br>
+          <b>Что это:</b> Пальмы на фоне заснеженных Альп, памятник Freddie Mercury на берегу озера Place du Marché.</p>
+          <img src="{images['Montreux']}" width="300" /><br>
+          <p><b>Время:</b> 20 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay3</styleUrl>
+        <Point><coordinates>6.911111,46.431111,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>10. Mont Blanc (Chamonix, 4 808 м)</name>
+        <description><![CDATA[
+          <h3>Пик Mont Blanc и ледник Bossons</h3>
+          <p><b>Где:</b> Chamonix-Mont-Blanc (Финиш Дня 3).<br>
+          <b>Что это:</b> Высшая точка Европы (4 808 м). Вертикальный перепад 3.8 км над городом. Родина мирового альпинизма (1786 г.) и I Зимних Олимпийских игр (1924 г.).</p>
+          <img src="{images['Chamonix']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Parking Saint-Michel (охраняемый подземный гараж в центре).</p>
+        ]]></description>
+        <styleUrl>#poiDay3</styleUrl>
+        <Point><coordinates>6.869400,45.923700,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>⭐ Точки интереса: День 4 (Chamonix ➔ Nîmes)</name>
+      
+      <Placemark>
+        <name>11. Annecy (Palais de l'Isle)</name>
+        <description><![CDATA[
+          <h3>Анси — «Альпийская Венеция»</h3>
+          <p><b>Где:</b> По пути из Chamonix к долине Роны (A41).<br>
+          <b>Что это:</b> Город у чистейшего бирюзового горного озера. Посреди канала стоит каменный замок-тюрьма XII века в форме носа корабля.</p>
+          <img src="{images['Annecy']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Parking Sainte-Claire (крытый подземный). <b>Время:</b> 1 час.</p>
+        ]]></description>
+        <styleUrl>#poiDay4</styleUrl>
+        <Point><coordinates>6.129400,45.899200,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>12. Pont du Gard (Римский акведук)</name>
+        <description><![CDATA[
+          <h3>Античный акведук Пон-дю-Гар (ЮНЕСКО)</h3>
+          <p><b>Где:</b> В 20 км перед Nîmes (съезд с A9).<br>
+          <b>Что это:</b> Грандиозный 49-метровый трехъярусный каменный мост I века н.э. Построен римлянами из 6-тонных блоков без раствора над рекой Gardon.</p>
+          <img src="{images['Pont_du_Gard']}" width="300" /><br>
+          <p><b>Масштаб:</b> Высота 16-этажного дома! Простоял более 2 000 лет.</p>
+          <p><b>🅿️ Парковка:</b> Официальный охраняемый паркинг заповедника. <b>Время:</b> 1 час.</p>
+        ]]></description>
+        <styleUrl>#poiDay4</styleUrl>
+        <Point><coordinates>4.535000,43.947500,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>13. Arènes de Nîmes</name>
+        <description><![CDATA[
+          <h3>Арена Нима (Римский амфитеатр)</h3>
+          <p><b>Где:</b> Центр Nîmes (Финиш Дня 4).<br>
+          <b>Что это:</b> Римский колизей 70 года н.э. Считается самым сохранившимся античным амфитеатром в мире (сохранился даже лучше римского Колизея!).</p>
+          <img src="{images['Nimes_Arena']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Parking Q-Park Arènes (подземный).</p>
+        ]]></description>
+        <styleUrl>#poiDay4</styleUrl>
+        <Point><coordinates>4.359722,43.834722,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>⭐ Точки интереса: День 5 (Nîmes ➔ Barcelona)</name>
+      
+      <Placemark>
+        <name>14. Forteresse de Salses</name>
+        <description><![CDATA[
+          <h3>Крепость Сальс (Граница Франции и Испании)</h3>
+          <p><b>Где:</b> Прямо у скоростной трассы A9 перед Перпиньяном.<br>
+          <b>Что это:</b> Мощнейший испано-каталонский военный форт XV века. Уникальная полуподземная архитектура: стены толщиной 12 метров, глубокий ров с водой.</p>
+          <img src="{images['Salses_Fort']}" width="300" /><br>
+          <p><b>История:</b> Форт был построен испанскими королями Фердинандом и Изабеллой для защиты каталонской границы от французской артиллерии.</p>
+          <p><b>🅿️ Парковка:</b> Паркинг прямо перед крепостью. <b>Время:</b> 30-40 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay5</styleUrl>
+        <Point><coordinates>2.918056,42.833611,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>15. Teatre-Museu Dalí (Figueres)</name>
+        <description><![CDATA[
+          <h3>Театр-музей Сальвадора Дали (Испания)</h3>
+          <p><b>Где:</b> У съезда с трассы AP-7 при въезде в Испанию.<br>
+          <b>Что это:</b> Сюрреалистический замок-театр с гигантскими яйцами и позолоченными манекенами на карнизах башен, созданный самим Дали.</p>
+          <img src="{images['Dali_Museum']}" width="300" /><br>
+          <p><b>🅿️ Парковка:</b> Parking Saba Plaça Catalunya (Figueres). <b>Время:</b> 45 мин.</p>
+        ]]></description>
+        <styleUrl>#poiDay5</styleUrl>
+        <Point><coordinates>2.959722,42.268056,0</coordinates></Point>
+      </Placemark>
+
+      <Placemark>
+        <name>16. Mirador de Montjuïc (Barcelona)</name>
+        <description><![CDATA[
+          <h3>Смотровая площадка Монтжуик (Барселона)</h3>
+          <p><b>Где:</b> Финишная панорамная точка в Barcelona.<br>
+          <b>Что это:</b> Вершина холма над морским портом и городом. Панорама 360° на Средиземное море, Саграда Фамилия и весь ваш новый город!</p>
+          <img src="{images['Barcelona_Montjuic']}" width="300" /><br>
+          <p><b>Финал великого переезда:</b> Вы доехали! 🎉</p>
+        ]]></description>
+        <styleUrl>#finishStop</styleUrl>
+        <Point><coordinates>2.167222,41.363056,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+  </Document>
+</kml>
+"""
+
+with open('navigation/berlin_barcelona_route.kml', 'w', encoding='utf-8') as f:
+    f.write(kml_content)
+
+print("Master KML generated successfully: 5 stage stops + continuous route line + 16 rich POIs with photos & stories!")
